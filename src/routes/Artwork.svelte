@@ -1,7 +1,6 @@
 <script lang="ts">
     import FacePic from "../Components/FacePic.svelte";
     import {information} from '../lib/info';
-    import {fade, fly} from "svelte/transition";
 
     export let params: object = {};
 
@@ -122,7 +121,7 @@
     <h3 class="text-center text-s font-extralight my-1 mx-2">{artwork_info.media}</h3>
 </div>
 
-<div out:fade={{duration: 400}} class="mx-3 flex flex-col justify-center items-center text-center my-3">
+<div class="mx-3 flex flex-col justify-center items-center text-center my-3">
     <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1">
         {#each pages as page}
             <div id="{page.name}-btn"
@@ -165,7 +164,7 @@
             </div>
         </div>
 
-        <div out:fly={{y: 30}} id="description-page" class="p-0 flex flex-wrap flex-row items-center justify-center">
+        <div id="description-page" class="p-0 flex flex-wrap flex-row items-center justify-center">
 
 <!--            Image Progress Bar-->
             <div class="w-[96%] bg-white-10 flex flex-row justify-center">
