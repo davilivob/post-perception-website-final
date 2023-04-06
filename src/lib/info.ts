@@ -7,8 +7,8 @@ const information_json = {
             2: "蒲欣妤",
             3: "許睿智",
             4: "朱紹筠",
-            5: "張珈瑄",
-            6: "吳黛葳",
+            5: "吳黛葳",
+            6: "張珈瑄",
             7: "高哲淯",
             8: "蔡尚騰",
             10: "翁國愷",
@@ -287,7 +287,7 @@ const information_json = {
                 members: [
                     {
                         id: 4,
-                        title: "",
+                        title: "組長",
                     },
                     {
                         id: 38,
@@ -719,9 +719,9 @@ const information_json = {
             1: "Pi Wei Tian",
             2: "Poo Xin Yu",
             3: "Hsueh Ruei-Jhih",
-            4: "Chu Shao-Chun",
-            5: "Chiang Jia Hsuan",
-            6: "Wu Dai Wei",
+            4: "Grace Chu",
+            5: "Wu Dai Wei",
+            6: "Chiang Jia Hsuan",
             7: "Guo Zhe Yu",
             8: "Tsai Shang-Teng",
             10: "Weng Kuo Kai",
@@ -1008,7 +1008,7 @@ const information_json = {
                 members: [
                     {
                         id: 4,
-                        title: "",
+                        title: "Team Leader",
                     },
                     {
                         id: 38,
@@ -1019,7 +1019,7 @@ const information_json = {
                         title: "",
                     }
                 ],
-                title: "空＿集合",
+                title: "Vac-sound Set",
                 format: "Audio Installation",
                 description: `
                     In the artwork, 18 speakers serve as independent sound-emitting bodies, becoming objects within the space,
