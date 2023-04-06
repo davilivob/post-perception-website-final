@@ -41,8 +41,8 @@
                  style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/0.jpg')"></div>
 
             <FacePic id={params.id} rounded="full" w="w-[40vh]" h="max-h-[40vh] shadow-lg shadow-black/40" do_animate="true" lang="{params.language}"></FacePic>
-            <i class="font-bold text-3xl my-3">{name}</i>
-            <a href="/#/{params.language}/artworks/{artwork_info.id}" class="text-2xl font-bold">
+            <i class="font-bold text-3xl my-3 text-white">{name}</i>
+            <a href="/#/{params.language}/artworks/{artwork_info.id}" class="text-2xl font-bold hover:text-white duration-200">
                 {#if artwork_info.member_title}
                     {#if is_en}
                         {artwork_info.member_title} of {artwork_info.title}

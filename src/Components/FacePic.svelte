@@ -26,6 +26,7 @@
         if (do_animate) {
             video.addEventListener('click', () => {
                 document.querySelector('#play-btn').classList.add('opacity-0');
+                document.querySelector('#play-btn').classList.add('hidden');
                 play_video();
             });
 
@@ -39,12 +40,13 @@
 
 {#if do_animate}
     <div class="flex items-center justify-center">
-        <a id="play-btn" class="fa-solid fa-play absolute text-white/50 text-8xl transition-all duration-1000"></a>
         <video class="{w} {h} rounded-{rounded} border-8 hover:border-white/90 border-white/10 backdrop-blur-lg transition-all duration-300
-        shadow-white/10 hover:shadow-white/30 hover:shadow-lg"
-               on:click={play_video}>
+        shadow-white/10 hover:shadow-white/30 hover:shadow-lg bg-no-repeat bg-contain"
+               on:click={play_video} controls="false" style="background-image: url('/images/website/logo/logo200.gif')">
             <source src="{vid_link}" type="video/mp4">
         </video>
+        <a id="play-btn" class="fa-solid fa-play absolute text-white/50 text-8xl transition-all duration-1000"
+           on:click={play_video}></a>
     </div>
 {:else}
     <img src="{img_link}" alt=""
@@ -54,3 +56,8 @@
 {/if}
 
 <!--     style="background-image: url('images/website/logo/logo600.gif')"-->
+<style>
+    video::-webkit-media-controls {
+        display: none;
+    }
+</style>
