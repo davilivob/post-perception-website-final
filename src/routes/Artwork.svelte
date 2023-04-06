@@ -148,12 +148,12 @@
         {/each}
     </div>
 
-    <div class="w-11/12 bg-gradient-to-tr from-white/10 to-violet-600/10 rounded-xl m-5 text-gray-300 font-bolder">
+    <div class="w-11/12 bg-gradient-to-tr from-white/5 to-violet-600/5 rounded-xl m-5 text-gray-300 font-bolder shadow-black/50 shadow-2xl">
 
         <div class="hidden p-10" id="creators-page">
-            <div class="justify-center flex flex-wrap gap-5">
+            <div class="justify-evenly flex flex-wrap">
                 {#each team_members as member}
-                    <div class="mx-1 md:mx-2 w-48 md:w-64 font-light text-center flex flex-col justify-center items-center">
+                    <div class="mx-1 w-48 md:w-64 font-light text-center flex flex-col justify-center items-center">
                         <FacePic id={member.id} lang="{params.language}"></FacePic>
                         <div class="desc text-xl mt-1">{all_info.member_names[member.id]}</div>
                         <div class="overlay">

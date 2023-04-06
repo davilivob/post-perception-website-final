@@ -121,7 +121,7 @@
         {is_en ? "MEMBERS" : "參展人員"}
     </h1>
 
-    <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1 w-11/12">
+    <div class="flex flex-row flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
         {#each pages as page}
             <div id="{page.name}-btn"
                  class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer"
@@ -146,11 +146,11 @@
         {/each}
     </div>
 
-    <div class="bg-white/[0.02] hover:bg-white/0 duration-300 rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit lg:p-2">
+    <div class="bg-none shadow-black/50 shadow-2xl rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit max-w-[80vw] lg:p-2">
         {#each members_info as admin_team}
             <div class="{(page_id == admin_team.id) ? '' : 'hidden'} p-10 flex flex-col items-center text-center"
                  id="{pages[admin_team.id].name}-page">
-                <div class="flex flex-row flex-wrap justify-center lg:gap-5 gap-2 border-b-1 border-white/20 ">
+                <div class="flex flex-row flex-wrap justify-evenly lg:gap-5 gap-2 border-b-1 border-white/20">
                     {#each admin_team.members as member}
                         <div class="flex flex-col gap-1">
                             <FacePic id={member.id} lang="{params.language}"/>
