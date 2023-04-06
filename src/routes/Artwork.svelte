@@ -208,6 +208,14 @@
         </div>
 
         <div id="image_record-page" class="{(current_page == 'image_record') ? '' : 'hidden'}">
+            <div class="w-[96%] bg-white-10 flex flex-row justify-center">
+                <div class="bg-gradient-to-l from-violet-500 to-transparent h-1 transition-all duration-500"
+                     style="width: {parseInt((record_img_num) * 100 / (img_range[1] - 1) / 4).toString()}%"></div>
+                <div class="bg-gradient-to-r from-violet-500 to-amber-500 h-1 transition-all duration-300"
+                     style="width: {parseInt((record_img_num) * 100 / (img_range[1] - 1) * 2 / 4).toString()}%"></div>
+                <div class="bg-gradient-to-r from-amber-500 to-transparent h-1 transition-all duration-300"
+                     style="width: {parseInt((record_img_num) * 100 / (img_range[1] - 1) / 4).toString()}%"></div>
+            </div>
             <div class="w-full h-[80vh]">
                 <div class="h-[72vh] w-full bg-no-repeat bg-center bg-contain bg-black/60 rounded-t-xl flex flex-row justify-between items-center px-3" id="record-image-container"
                      style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/{recorded_images[record_img_num]}.jpg')">
@@ -229,6 +237,7 @@
                         <div class="min-w-[11vw] h-[8vh] bg-no-repeat bg-cover bg-center border-2 hover:border-white border-white/0 cursor-pointer duration-200"
                              style="background-image:url('/images/exhibition/artwork_photos/{artwork_info.id}/{img_link}.jpg'), url('/images/website/logo/logo200.gif');"
                              on:click={() => {
+                                 record_img_num = recorded_images.indexOf(img_link);
                                 document.querySelector("#record-image-container").style.backgroundImage = `url('/images/exhibition/artwork_photos/${artwork_info.id}/${img_link}.jpg')`;
                              }}
                         >
