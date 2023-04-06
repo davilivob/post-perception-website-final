@@ -39,10 +39,14 @@
 </script>
 
 <div class="pt-16 flex flex-col gap-5 items-center justify-center">
-    <div class="mx-3 ">
+    <div class="mx-3 flex flex-row justify-center items-center">
+        <img src="/images/website/logo/logo200.gif"
+             class="w-[10vh] h-[10vh] rotate-180" alt="">
         <h1 class="text-center text-5xl font-black my-1 text-white">
             {is_en ? "About This Exhibition" : "關於本展覽"}
         </h1>
+        <img src="/images/website/logo/logo200.gif?id={Math.floor(Math.random() * 1000)}" class="w-[10vh] h-[10vh]"
+             alt="">
     </div>
 
     <div class="flex flex-row flex-wrap gap-3 justify-center items-center">
@@ -51,7 +55,8 @@
                 {@html description}
             </p>
         </div>
-        <img src="images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded">
+        <img src="images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded"
+             style="background-image: url('/images/website/logo/logo200.gif')">
     </div>
     <Sponsor language="{params.language}"/>
 </div>
