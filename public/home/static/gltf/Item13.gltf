@@ -1,0 +1,98 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.32",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Item13"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.004",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 3,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 240,
+            "max" : [
+                0.10860245674848557,
+                0.20247967541217804,
+                0.17460662126541138
+            ],
+            "min" : [
+                -0.17424291372299194,
+                -0.20247973501682281,
+                -0.11102957278490067
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 240,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 240,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 444,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 1399,
+            "byteOffset" : 0
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1400,
+            "uri" : "data:application/octet-stream;base64,RFJBQ08CAgEBAAAA8AGUAQKUARwAON/3fd/350/+/En+/En+5Nn3/fmTP3+SP3+SP3n2fd/3fd/3fd/3fd/3fd/3fd/3fd/3fd/3fd8H/wJCQ/8CGEj/AhhIA/8AAAAAAAEAAAEACQMAAAIBAQkDAAEDAQMJAgACAgEBAQAPA3kLeQsPIRJ5A0UMrQILiQRPIO/Ivqh1Sfqr6SUlpxTNuPFpOGl7LeIEuS8JoiQfeF21dpzjDiD36MN9cj1goq5xAcSIAmGAlcNAgDJv1Ar2AMGSYIZjW+pgjW/oRg6vh2NpAGAtkKUAgGGqFwDWAsFiAQCZNy8AqoW3CgBwsXkFUC2CblUA2GK91QCAi0WQlwDV6hWAtQi8VQGAi+1WA4AtFkHMKQDEoF4A7SMAXwSAvE8AsJ0DIK0PAJ8HIKQyAHxUAK/4ANJeAB/cArCRFoAcOKA3EoA9nQCOtQIAlQTIhwCgFwqAtXQAsO0B4vQAkEwGYKdUALD2gBFfACDaAoiiFkAclwC67QSATAoYRwNkBDpBPBeQI+gKAG0+AA0gQMNeAB/sAngQFcArMgA6D8BIigD8zQGw1gEAUASAvBIA0HUF4OkTQCYJoF4+AKpaAHH+AAdfACDqAoAgFQCsMeBJD4DIiQD20QGgtgHohwCgNwKAuq8ASF0IgCA/ABMlCig9CvARMAT/hQBABA1B3xHwIzgJ9qgAH0FP8PYF4AiigrA0IEYwFjzJASiCuGAnD/AQ7AUjfoCE4C9IAAYoIPgLHIABDQjyApM+UELwFvjggR6CsYBKDkwRPAVkaGCMICeQ6wJxBCOBnhTII1gQAGQE/ggcBAAbgT8ClEB/CuQR+ATyXiCOQCoQRwNhBGQBdBx4IpALePHADgFfQNoHRggABRT+gQQCQIGGf8CBQC8o5QMmBHBB7x3wIRALpuEAFUE3CwDMrsgtAAC5dgtAW0EcUACAFvUWALcEdRUAEFG9DcAtBOmqABCiqqsBgIiKgFsB3No2gLYQsKsCgIi6rgYAISoCAAAAAP8/AAC8bDK+2VZPvnlj473XVs8+DgADAQEF/wcZOMdoiBNEAyQrRANEQ0T/R2jLJMck4yQPRP//o1UB//+nJA9E//97JBNE1ySfRANEK0QDRBOIRCNEm0RDLtLaPseSL4ndELGr0UUc2LKIIFM96TKgy0VZjtLq0WFWB/TGYnXRjV9Rl7DtXvPX+AFdr0t996WWqHSc4CU23Qhvk/8DAAD/AQAACgEBAQEHgCAREo+IiJ8kA0RzrIgPJPtoRO9ERB8kJB0EHQSTJAdERH+IaBdERGskRCskJAMkbyQkKyT/t4hoz0REsyQLJDdEyyQziIifRETPJCTviIj/G0THaCQkRP9DRGiIRCskMyREJCQnRCQkRP//////////LyT///////shAlEBIQIRAQNE////syRDJP//////////////7yQDJP///////////////1sk/7Mk/9u9DIACzOmtR1s3qUfX0JHjxtNtAR901PfxW3Nx5ka/25j8odRi0laem5iI6jH8zSe8Jdw53mnF4IrU7tr1/KHUYtJWhwwj75vCfVjOodRi0laem5iI6jH8zSe8Jdw53mnF4IrU7tr1/Asy2r6XwtxSek0fo8Ru+KmirMApXsA37l9vhCF1f9+TkfO0jlbyLGRnSYW+g/abfpTolI1P/k1ytTttuXjhxZ+N3Id8vs9mFUB3nuPT2JohKWAk4h7hsB/92aPU9g6xWRLcUNFqH+w4pAbzusBFGUJaBr3OCUYRBYi6xJ9NJKf/+NCh6oJNPmWPfWk8t2ly9bpdQApi3ylC+7r8ggAAAAD/DwAAAAAAAAAAAAAAAIA/DAA="
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+#loading-progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50px;
+    width: 20%;
+    font-size: 21px;
+    text-align: center;
+    background-color: rgb(36, 45, 214);
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#work-name {
+    top: 80%;
+    position: absolute;
+    font-size: 69px;
+    opacity: 1;
+    transform: translateY(0);
+    font-weight: bolder;
+    animation-name: blur-effect;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.animation {
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#exit {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    transform: translateY(10000px);
+    opacity: 0.7;
+    filter: blur(0px);
+    background-image: url("staticg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    transition: opacity 1s ease, filter 1s ease;
+}
+
+#exit:hover {
+    cursor: pointer;
+    filter: blur(8px);
+    transition: filter 1s ease;
+}
+
+#work-information {
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    border: 2px solid;
+    border-radius: 45px;
+    border-color: aliceblue;
+    background-color: #161D2D;
+    transition: opacity 1s ease;
+}
+
+#text {
+    padding: 20px;
+    margin: 20px;
+    font-size: 31px;
+}
+
+@keyframes blur-effect {
+    0% {
+        filter: blur(0px);
+    }
+    20% {
+        filter: blur(8px);
+    }
+    60% {
+        filter: blur(0px);
+    }
+}
