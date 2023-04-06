@@ -98,20 +98,20 @@
 <!--<div class="mt-8 mx-3 fixed">-->
 <!--    <a class="text-lg" href="/#/{params.language}/artworks">-->
 <!--        <a class="fa-solid fa-chevron-left"></a>-->
-<!--        <a class="transition-all duration-300 text-white/0 hover:text-white" id="go-back-text">{is_en ? "Back to Artworks List": "回到作品列表"}</a>-->
+<!--        <a class="transition-all duration-300 text-white/0 hover:text-white pointer-events-none" id="go-back-text">{is_en ? "Back to Artworks List": "回到作品列表"}</a>-->
 <!--    </a>-->
 <!--</div>-->
 
 <div class="mx-3 mt-12 text-center">
     {#if artwork_info.id >= 1}
-        <a class="text-lg mx-3 text-white/10 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id - 1}">
+        <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id - 1}">
             <a class="fa-solid fa-arrow-left"></a>
             {all_info.art_teams[artwork_info.id - 1].title}
         </a>
     {/if}
     <h1 class="text-center text-5xl font-black m-1 text-white {(artwork_info.id == 4) ? 'break-all' : ''}">{artwork_info.title}</h1>
     {#if artwork_info.id < 12}
-        <a class="text-lg mx-3 text-white/10 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id + 1}">
+        <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id + 1}">
             {all_info.art_teams[artwork_info.id + 1].title}
             <a class="fa-solid fa-arrow-right"></a>
         </a>
@@ -150,7 +150,7 @@
 
     <div class="w-11/12 bg-gradient-to-tr from-white/5 to-violet-600/5 rounded-xl m-5 text-gray-300 font-bolder shadow-black/50 shadow-2xl">
 
-        <div class="hidden p-10" id="creators-page">
+        <div class="hidden p-5" id="creators-page">
             <div class="justify-evenly flex flex-wrap">
                 {#each team_members as member}
                     <div class="mx-1 w-48 md:w-64 font-light text-center flex flex-col justify-center items-center">
@@ -201,6 +201,12 @@
         </div>
 
         <div id="video_record-page" class="hidden">
+            <iframe class="w-full h-[80vh] rounded-xl"
+                    src="https://www.youtube.com/embed/{artwork_info.record.videos.youtube || 'dQw4w9WgXcQ'}"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+            </iframe>
         </div>
 
     </div>
