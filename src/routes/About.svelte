@@ -50,12 +50,13 @@
     </div>
 
     <div class="flex flex-row flex-wrap gap-3 justify-center items-center">
-        <div class="w-5/6 md:w-2/6 max-h-[60vh] overflow-auto sticky rounded-xl bg-gradient-to-br from-white/80 to-cyan-50/50 shadow-inner shadow-black">
-            <p class="m-4 mx-8 text-black/80 tracking-wider text-lg text-center">
+        <div class="w-5/6 md:w-2/6 max-h-[60vh] overflow-auto sticky shadow-inner shadow-black bg-no-repeat bg-cover bg-center"
+             style="background-image: url('/images/website/paper-texture.jpg')">
+            <p class="m-4 mx-8 text-black/90 text-lg text-center">
                 {@html description}
             </p>
         </div>
-        <img src="images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded"
+        <img src="images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded bg-no-repeat bg-center"
              style="background-image: url('/images/website/logo/logo200.gif')">
     </div>
     <Sponsor language="{params.language}"/>
