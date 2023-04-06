@@ -32,6 +32,9 @@
             }
         }
     }
+
+    const is_mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);  //判斷裝置類型
+    console.log(is_mobile)
 </script>
 
 <div id="main" class="flex justify-center items-center">
@@ -40,7 +43,11 @@
             <div class="absolute w-screen h-[40vh] z-[-1] top-0 bg-no-repeat bg-cover bg-center shadow-lg"
                  style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/0.jpg')"></div>
 
-            <FacePic id={params.id} rounded="full" w="w-[40vh]" h="max-h-[40vh] shadow-lg shadow-black/40" do_animate="true" lang="{params.language}"></FacePic>
+            {#if is_mobile}
+                <FacePic id={params.id} rounded="full" w="w-[40vh]" h="max-h-[40vh] shadow-lg shadow-black/40" lang="{params.language}"></FacePic>
+            {:else}
+                <FacePic id={params.id} rounded="full" w="w-[40vh]" h="max-h-[40vh] shadow-lg shadow-black/40" do_animate="true" lang="{params.language}"></FacePic>
+            {/if}
             <i class="font-bold text-3xl my-3 text-white">{name}</i>
             <a href="/#/{params.language}/artworks/{artwork_info.id}" class="text-2xl font-bold hover:text-white duration-200">
                 {#if artwork_info.member_title}
