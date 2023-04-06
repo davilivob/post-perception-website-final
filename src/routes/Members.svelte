@@ -1,6 +1,7 @@
 <script lang="ts">
     import {information} from '../lib/info';
     import FacePic from "../Components/FacePic.svelte";
+    import {onMount} from "svelte";
 
 
     export let params = {
@@ -20,38 +21,41 @@
     }
 
 
-    let page_id = params.id || '0'
+    let page_id: String = params.id || '0'
     console.log(page_id)
 
 
-    let current_page = 'creators'
+    let current_page = 'president'
 
     // This line in necessary to make TailwindCSS know what tags need to be used
     const tailwinds_tags = `
-        to-emerald-900/10 to-emerald-900 to-red-900/10 to-red-900 to-violet-900/10 to-violet-900 to-sky-900/10 to-sky-900 to-yellow-900/10 to-yellow-900 to-rose-900/10 to-rose-900 to-pink-900/10 to-pink-900 to-orange-900/10 to-orange-900 to-teal-900/10 to-teal-900 to-amber-900/10 to-amber-900 to-lime-900/10 to-lime-900
+        to-rose-500/5 to-purple-500/5 to-teal-500/5 to-amber-500/5 to-violet-500/5 to-sky-500/5 to-red-500/5 to-lime-500/5 to-orange-500/5
+        to-yellow-500/5 to-green-500/5 to-emerald-500/5 to-cyan-500/5 to-fuchsia-500/5 to-pink-500/5
     `
+
+    $:page_color = 'rose';
 
     const pages: Object = [
         {
-            id: 0, name: 'president', color: 'emerald', content: is_en ? 'President' : '總召', icon: 'fa-user-secret'
+            id: 0, name: 'president', color: 'rose', content: is_en ? 'President' : '總召', icon: 'fa-user-secret'
         },
         {
-            id: 1, name: 'paper', color: 'red', content: is_en ? 'Paper' : '文書', icon: 'fa-pen-nib'
+            id: 1, name: 'paper', color: 'pink', content: is_en ? 'Paper' : '文書', icon: 'fa-pen-nib'
         },
         {
-            id: 2, name: 'moneyman', color: 'violet', content: is_en ? 'Moneyman' : '總務', icon: 'fa-sack-dollar'
+            id: 2, name: 'moneyman', color: 'teal', content: is_en ? 'Moneyman' : '總務', icon: 'fa-sack-dollar'
         },
         {
-            id: 3, name: 'translate', color: 'sky', content: is_en ? 'Translate' : '翻譯組', icon: 'fa-language'
+            id: 3, name: 'translate', color: 'cyan', content: is_en ? 'Translate' : '翻譯組', icon: 'fa-language'
         },
         {
-            id: 4, name: 'visual', color: 'yellow', content: is_en ? 'Visual' : '視覺組', icon: 'fa-brush'
+            id: 4, name: 'visual', color: 'purple', content: is_en ? 'Visual' : '視覺組', icon: 'fa-brush'
         },
         {
             id: 5, name: 'public', color: 'rose', content: is_en ? 'Business' : '公關組', icon: 'fa-handshake'
         },
         {
-            id: 6, name: 'joy', color: 'pink', content: is_en ? 'Get High' : '活動組', icon: 'fa-smile-wink'
+            id: 6, name: 'joy', color: 'violet', content: is_en ? 'Get High' : '活動組', icon: 'fa-smile-wink'
         },
         {
             id: 7,
@@ -61,13 +65,13 @@
             icon: 'fa-people-carry'
         },
         {
-            id: 8, name: 'things', color: 'teal', content: is_en ? 'Video Record' : '事務組', icon: 'fa-folder-open'
+            id: 8, name: 'things', color: 'yellow', content: is_en ? 'Video Record' : '事務組', icon: 'fa-folder-open'
         },
         {
-            id: 9, name: 'record', color: 'amber', content: is_en ? 'Record' : '紀錄組', icon: 'fa-camera'
+            id: 9, name: 'record', color: 'blue', content: is_en ? 'Record' : '紀錄組', icon: 'fa-camera'
         },
         {
-            id: 10, name: 'website', color: 'lime', content: is_en ? 'Website' : '網頁組', icon: 'fa-square-terminal'
+            id: 10, name: 'website', color: 'green', content: is_en ? 'Website' : '網頁組', icon: 'fa-square-terminal'
         },
     ];
 
@@ -81,59 +85,77 @@
         document.getElementById(`${page_name}-page`).classList.remove('hidden')
     }
 
-    const stop_init_btn = () => clearInterval(set_init_btn)
+    function light_btn(btn) {
+        btn.classList.remove(`from-transparent`);
+        btn.classList.add(`from-white/50`);
+        btn.classList.add(`via-white/80`);
+        btn.classList.remove(`to-white/10`);
+        btn.classList.add(`to-white`);
+        btn.classList.add(`text-black`);
+        btn.classList.add('shadow-lg')
+        btn.classList.add('shadow-white/20')
+    }
 
-    let set_init_btn = setInterval(() => {
-        if (document.getElementById(`${pages[page_id].name}-btn`).classList.contains(`to-${pages[page_id].color}-900/10`)) {
-            document.getElementById(`${pages[page_id].name}-btn`).classList.add(`to-${pages[page_id].color}-900`);
-            document.getElementById(`${pages[page_id].name}-btn`).classList.remove(`to-${pages[page_id].color}-900/10`);
-            stop_init_btn()
-        } else return
-    }, 100)
+    function dark_btn(btn) {
+        btn.classList.add(`from-transparent`);
+        btn.classList.remove(`from-white/50`);
+        btn.classList.remove(`via-white/80`);
+        btn.classList.add(`to-white/10`);
+        btn.classList.remove(`to-white`);
+        btn.classList.remove(`text-black`);
+        btn.classList.remove('shadow-lg')
+        btn.classList.remove('shadow-white/20')
+    }
+
+    onMount(() => {
+        const page_name: String = pages[page_id].name;
+        const page_color: String = pages[page_id].color;
+        const page_btn: HTMLElement = document.getElementById(`${page_name}-btn`);
+        light_btn(page_btn);
+    })
+
 </script>
 
 <div class="flex flex-col items-center m-5 mt-12">
-    <h1 class="text-center text-5xl font-black my-3 text-white">
+    <h1 class="text-center text-5xl font-black my-3 text-white lg:hidden">
         {is_en ? "MEMBERS" : "參展人員"}
     </h1>
-    <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1">
+
+    <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1 w-11/12">
         {#each pages as page}
             <div id="{page.name}-btn"
-                 class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-s cursor-pointer duration-300 ease-in-out"
+                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer"
                  on:click={e => {
                     window.location.href = `/#/${params.language}/members/${page.id}`
                     if (current_page === page.name) return
                     current_page = page.name
-                    console.log(`switching to ${page.name}`)
-                    e.target.classList.toggle(`to-${page.color}-900`)
-                    e.target.classList.toggle(`to-${page.color}-900/10`)
+                    page_color = page.color;
+                    light_btn(e.target)
                     for (let i = 0; i < pages.length; i++) {
                         if (pages[i].name !== page.name) {
-                            hide_page(pages[i].name)
-                            document.getElementById(`${pages[i].name}-btn`).classList.remove(`to-${pages[i].color}-900`);
-                            document.getElementById(`${pages[i].name}-btn`).classList.add(`to-${pages[i].color}-900/10`);
+                            hide_page(pages[i].name);
+                            dark_btn(document.getElementById(`${pages[i].name}-btn`))
                         }else {
                             show_page(pages[i].name)
                         }
                     }
                 }}>
-                <a class="fa-regular {page.icon}"></a>
+                <a class="fa-regular {page.icon} pointer-events-none"></a>
                 {page.content}
             </div>
         {/each}
     </div>
-    <div class="w-11/12 bg-gradient-to-tr from-white/10 to-violet-600/10 rounded-xl m-5 text-gray-300 font-bolder">
+
+    <div class="shadow-2xl shadow-white/5 hover:shadow-white/0 bg-gradient-to-bl bg-white/[0.02] hover:bg-white/0 transition-all duration-300 rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit lg:p-2">
         {#each members_info as admin_team}
             <div class="{(page_id == admin_team.id) ? '' : 'hidden'} p-10 flex flex-col items-center text-center"
                  id="{pages[admin_team.id].name}-page">
-                <!--                <h2 class="text-3xl font-bold my-1 text-white">{admin_team.department.charAt(0).toUpperCase() + admin_team.department.slice(1)}</h2>-->
-                <h2 class="text-3xl font-bold my-1 text-white">{pages[admin_team.id].content}</h2>
-                <div class="flex flex-row flex-wrap justify-center gap-4 border-b-1 border-white/20 p-10">
+                <div class="flex flex-row flex-wrap justify-center lg:gap-5 gap-2 border-b-1 border-white/20 ">
                     {#each admin_team.members as member}
-                        <div class="">
+                        <div class="flex flex-col gap-1">
                             <FacePic id={member.id} lang="{params.language}"/>
-                            <a class="font-extrabold">{member.title}</a><br>
-                            <a>{all_info.member_names[member.id]}</a>
+                            <a class="font-extrabold mt-2 text-3xl">{member.title}</a>
+                            <a class="font-normal text-xl">{all_info.member_names[member.id]}</a>
                         </div>
                     {/each}
                 </div>
