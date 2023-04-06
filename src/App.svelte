@@ -43,15 +43,16 @@
         window.location.href = '/#/zh/'
         location.reload();
     }
+    let current_page = URL.split(language)[1].split('/')[1]
 
 </script>
 
 <TailwindCSS/>
-<div class="bg-gradient-to-br from-blue-900/90 to-black w-screen h-screen fixed z-[-1]"></div>
-<div class="bg-gradient-to-br from-black/40 to-transparent w-screen h-screen fixed z-[-1]"></div>
+<div class="bg-gradient-to-br from-blue-900/80 via-black/100 to-sky-800/50 w-screen h-screen fixed z-[-3]"></div>
+<div class="bg-gradient-to-bl from-black via-pink-900/10 to-black w-screen h-screen fixed z-[-1] backdrop-blur-2xl"></div>
 <main>
     <Cursor/>
-    <Header language="{language}"/>
+    <Header language="{language}" page="{current_page}"/>
     <div class="py-8">
         <Router {routes}/>
     </div>
