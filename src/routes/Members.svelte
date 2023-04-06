@@ -87,24 +87,24 @@
 
     function light_btn(btn) {
         btn.classList.remove(`from-transparent`);
-        btn.classList.add(`from-white/50`);
-        btn.classList.add(`via-white/80`);
+        btn.classList.add(`from-white/10`);
+        btn.classList.add(`via-white/60`);
         btn.classList.remove(`to-white/10`);
         btn.classList.add(`to-white`);
         btn.classList.add(`text-black`);
         btn.classList.add('shadow-lg')
-        btn.classList.add('shadow-white/20')
+        btn.classList.add('shadow-black/50')
     }
 
     function dark_btn(btn) {
         btn.classList.add(`from-transparent`);
-        btn.classList.remove(`from-white/50`);
-        btn.classList.remove(`via-white/80`);
+        btn.classList.remove(`from-white/10`);
+        btn.classList.remove(`via-white/60`);
         btn.classList.add(`to-white/10`);
         btn.classList.remove(`to-white`);
         btn.classList.remove(`text-black`);
         btn.classList.remove('shadow-lg')
-        btn.classList.remove('shadow-white/20')
+        btn.classList.remove('shadow-black/50')
     }
 
     onMount(() => {
@@ -121,7 +121,7 @@
         {is_en ? "MEMBERS" : "參展人員"}
     </h1>
 
-    <div class="flex flex-row flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
+    <div class="flex flex-row flex-wrap py-5 items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
         {#each pages as page}
             <div id="{page.name}-btn"
                  class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer"
@@ -148,7 +148,7 @@
 
     <div class="bg-none shadow-black/50 shadow-2xl rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit max-w-[80vw] lg:p-2">
         {#each members_info as admin_team}
-            <div class="{(page_id == admin_team.id) ? '' : 'hidden'} p-10 flex flex-col items-center text-center"
+            <div class="{(page_id == admin_team.id) ? '' : 'hidden'} p-10 text-center"
                  id="{pages[admin_team.id].name}-page">
                 <div class="flex flex-row flex-wrap justify-evenly lg:gap-5 gap-2 border-b-1 border-white/20">
                     {#each admin_team.members as member}
