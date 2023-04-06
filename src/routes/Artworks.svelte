@@ -52,7 +52,7 @@
 
 </script>
 <div class="pt-12">
-    <h1 class="text-center text-5xl font-extrabold text-white m-5">
+    <h1 class="text-center text-5xl font-extrabold text-white m-5 lg:text-white/0">
         {is_en ? "ARTWORKS" : "作品一覽"}
     </h1>
     <div class="flex flex-wrap relative left-0 mx-20 items-center justify-center text-center ">
@@ -86,7 +86,6 @@
                 {#each artworks_info[hovered_title.id].members as member}
                     <a class="cursor-pointer hover:border-b-2"
                        href="/#/{params.language}/member/{member.id}">{all_info.member_names[member.id]}</a>
-                    &nbsp;
                 {/each}
             </p>
         </div>
