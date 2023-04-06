@@ -12,6 +12,7 @@
     import RedirToZh from "./routes/RedirToZh.svelte";
     import Members from "./routes/Members.svelte";
     import Member from "./routes/Member.svelte";
+    import Records from "./routes/Records.svelte";
     import Redirector from "./routes/Redirector.svelte";
 
     // Import Components
@@ -30,7 +31,7 @@
         '/:language/members/:id': Members,
         '/:language/member/:id': Member,
         '/redirect/:path': Redirector,
-        // '/:language/record': Artwork,
+        '/:language/records': Records,
         // '/:language/record/:id': Artwork,
         '*': PageNotFound,
     }
