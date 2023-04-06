@@ -17,8 +17,10 @@
     let img_range: Array<Number> = artwork_info.record.images;
     let face_pic_width_vw = parseInt(String(100.0 / (team_members.length)));
 
-    let current_page = params.page || 'description'
+    const default_page = 'description';
+    let current_page = params.page || default_page;
     $:image_num = 0;
+    $:record_img_num = 0;
 
     // This line in necessary to make TailwindCSS know what tags need to be used
     const tailwinds_tags = ['to-violet-900', 'to-violet-900/10', 'to-rose-900', 'to-rose-900/10', 'to-cyan-900', 'to-cyan-900/10', 'to-lime-900', 'to-lime-900/10'];
@@ -37,6 +39,16 @@
             name: 'video_record', color: 'lime', content: is_en ? 'Video Record' : '影像記錄', icon: 'fa-video'
         },
     ];
+
+    if (['creators', 'description', 'image_record', 'video_record'].indexOf(current_page) == -1) {
+        window.location.href = `/#/${params.language}/artworks/${params.id}`;
+        current_page = default_page;
+    }
+
+    let recorded_images = [];
+    for (let i = img_range[0]; i < img_range[1] + img_range[0]; i ++) {
+        recorded_images.push(i);
+    }
 
     function next_img() {
         if (image_num >= img_range[0] - 1) image_num = 0;
@@ -122,7 +134,7 @@
     <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1">
         {#each pages as page}
             <div id="{page.name}-btn"
-                 class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-xs cursor-pointer"
+                 class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-s cursor-pointer"
                  on:click={e => {
                         if (current_page === page.name) return
                      window.location.href = `/#/${params.language}/artworks/${artwork_info.id}/${page.name}`
@@ -140,7 +152,7 @@
                         }
                     }
                 }}>
-                <a class="fa-regular {page.icon}"></a>
+                <a class="fa-regular {page.icon} pointer-events-none"></a>
                 {page.content}
             </div>
         {/each}
@@ -196,7 +208,33 @@
         </div>
 
         <div id="image_record-page" class="{(current_page == 'image_record') ? '' : 'hidden'}">
-            <div class="rounded-xl w-full h-[80vh] flex flex-row">
+            <div class="w-full h-[80vh]">
+                <div class="h-[72vh] w-full bg-no-repeat bg-center bg-contain bg-black/60 rounded-t-xl flex flex-row justify-between items-center px-3" id="record-image-container"
+                     style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/{recorded_images[record_img_num]}.jpg')">
+                    <a class="fa-solid fa-chevron-left text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
+                        on:click={() => {
+                            if (record_img_num > 0) record_img_num -= 1;
+                            else record_img_num = recorded_images.length - 1;
+                        }}
+                    ></a>
+                    <a class="fa-solid fa-chevron-right text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
+                        on:click={() => {
+                           if (record_img_num < recorded_images.length - 1) record_img_num += 1;
+                           else record_img_num = 0;
+                        }}
+                    ></a>
+                </div>
+                <div class="overflow-x-auto w-full flex-row flex">
+                    {#each recorded_images as img_link}
+                        <div class="min-w-[11vw] h-[8vh] bg-no-repeat bg-cover bg-center border-2 hover:border-white border-white/0 cursor-pointer duration-200"
+                             style="background-image:url('/images/exhibition/artwork_photos/{artwork_info.id}/{img_link}.jpg'), url('/images/website/logo/logo200.gif');"
+                             on:click={() => {
+                                document.querySelector("#record-image-container").style.backgroundImage = `url('/images/exhibition/artwork_photos/${artwork_info.id}/${img_link}.jpg')`;
+                             }}
+                        >
+                        </div>
+                    {/each}
+                </div>
             </div>
         </div>
 

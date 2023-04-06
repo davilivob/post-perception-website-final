@@ -75,7 +75,7 @@ const information_json = {
                 media: "膠合玻璃, 電子材料, 彩色有聲, 18'00\", 彩⾊/有聲, 2023",
                 size: "200cm x 200cm x 200cm",
                 record: {
-                    images: [2, 0],
+                    images: [2, 17],
                     videos: {
                         youtube: "dQw4w9WgXcQ"
                     },
