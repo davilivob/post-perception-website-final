@@ -3,6 +3,8 @@
     import Logo from '../../public/images/website/logo/logo200.gif'
 
     export let language: string = 'zh';
+    export let page: string = 'home';
+
     let is_en: boolean = language === 'en';
     let URL: string = window.location.href
 
@@ -10,6 +12,10 @@
         URL = window.location.href;
         window.location.href = is_en ? URL.replace('en', 'zh') : URL.replace('zh', 'en');
         location.reload();
+    }
+
+    function switch_page(path) {
+
     }
 
     const links = [
@@ -29,9 +35,6 @@
         menu_icon.classList.toggle('hidden');
     }
 
-    function blur_links() {
-        document.querySelector('nav ul').classList.toggle('xl:blur-sm');
-    }
 
 </script>
 
@@ -49,10 +52,19 @@
 
     <div class="hidden lg:block mr-5 font-bold text-lg rounded-xl ">
         {#each links as link (link.id)}
-            <a class="cursor-pointer hover:text-white text-amber-400 border-r-2 border-white/60 hover:text-2xl px-3 ">
-                <a href="#/{language}/{link.en}/">
-                    {is_en ? link.en.toUpperCase() : link.zh}
-                </a>
+            <a class="cursor-pointer hover:text-white {(link.en == page) ? 'text-white text-2xl' : 'text-amber-400'} border-r-2 border-white/60 hover:text-2xl px-3"
+               href="#/{language}/{link.en}" on:click={e => {
+                   for (let link of links) {
+                       document.querySelector(`a[href="#/${language}/${link.en}"]`).classList.remove('text-white')
+                       document.querySelector(`a[href="#/${language}/${link.en}"]`).classList.remove('text-2xl')
+                       document.querySelector(`a[href="#/${language}/${link.en}"]`).classList.add('text-amber-400')
+                   }
+                   window.location.href = e.target.href
+                   e.target.classList.add('text-white')
+                   e.target.classList.add('text-2xl')
+                   e.target.classList.remove('text-amber-400')
+               }}>
+                {is_en ? link.en.toUpperCase() : link.zh}
             </a>
         {/each}
         <a class="cursor-pointer hover:text-white text-amber-400 hover:text-2xl" on:click={switch_language}>
@@ -63,8 +75,8 @@
         </a>
     </div>
 
-    <i id="menu-icon" class="fa-duotone fa-bars p-5 text-3xl ml-auto cursor-pointer text-3xl mx-2 lg:hidden"
-       on:click={open_menu}></i>
+    <button id="menu-icon" class="fa-solid fa-bars p-5 text-3xl ml-auto cursor-pointer text-3xl mx-2 lg:hidden"
+            on:click={open_menu}></button>
 </div>
 
 
