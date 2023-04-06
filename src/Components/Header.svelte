@@ -1,7 +1,4 @@
 <script lang="ts">
-    // Import Assets
-    import Logo from '../../public/images/website/logo/logo200.gif'
-
     export let language: string = 'zh';
     export let page: string = 'home';
 
@@ -39,20 +36,20 @@
 </script>
 
 <div id="navbar"
-     class="fixed w-screen h-16 backdrop-blur-2xl z-30 flex flex-row items-center justify-between bg-gradient-to-br from-transparent to-black/30 shadow-2xl">
+     class="fixed w-screen h-16 backdrop-blur-2xl z-30 flex flex-row items-center justify-between bg-gradient-to-br from-transparent to-black/30 shadow-2xl shadow-black/50">
     <div class="flex justify-between items-center font-extrabold">
         <a href="#/{language}/" class="font-extrabold">
             <h1 class="text-white not-italic text-4xl left-5 tracking-tighter flex flex-row justify-center items-center"
                 id="header-title">
-                <img src={Logo} alt="Logo" class="h-16">
+                <img src='/images/website/logo/logo200.gif' alt="Logo" class="h-16">
                 <a class="hidden sm:inline shadow-black transform-all duration-500 ease-in-out">{ is_en ? 'Post-Perception' : '後知後覺後' }</a>
             </h1>
         </a>
     </div>
 
-    <div class="hidden lg:block mr-5 font-bold text-lg rounded-xl ">
+    <div class="hidden lg:block mr-5 font-bold text-lg rounded-xl">
         {#each links as link (link.id)}
-            <a class="cursor-pointer hover:text-white {(link.en == page) ? 'text-white text-2xl' : 'text-amber-400'} border-r-2 border-white/60 hover:text-2xl px-3"
+            <a class="cursor-pointer hover:text-white {(link.en == page) ? 'text-white text-2xl' : 'text-amber-400'} border-r-2 border-white/60 px-3 duration-100"
                href="#/{language}/{link.en}" on:click={e => {
                    for (let link of links) {
                        document.querySelector(`a[href="#/${language}/${link.en}"]`).classList.remove('text-white')
@@ -67,7 +64,7 @@
                 {is_en ? link.en.toUpperCase() : link.zh}
             </a>
         {/each}
-        <a class="cursor-pointer hover:text-white text-amber-400 hover:text-2xl" on:click={switch_language}>
+        <a class="cursor-pointer hover:text-white text-amber-400" on:click={switch_language}>
             {@html
                 is_en ? '<a class="text-white/20">中</a>/<a class="text-white">En</a>'
                     : '<a class="text-white">中</a>/<a class="text-white/20">En</a>'
