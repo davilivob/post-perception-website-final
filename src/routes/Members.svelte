@@ -146,7 +146,7 @@
         {/each}
     </div>
 
-    <div class="shadow-2xl shadow-white/5 hover:shadow-white/0 bg-gradient-to-bl bg-white/[0.02] hover:bg-white/0 transition-all duration-300 rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit lg:p-2">
+    <div class="bg-white/[0.02] hover:bg-white/0 duration-300 rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit lg:p-2">
         {#each members_info as admin_team}
             <div class="{(page_id == admin_team.id) ? '' : 'hidden'} p-10 flex flex-col items-center text-center"
                  id="{pages[admin_team.id].name}-page">
