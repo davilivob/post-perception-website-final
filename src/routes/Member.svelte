@@ -34,11 +34,13 @@
     }
 </script>
 
-<div id="main" class="flex justify-center items-center text-center">
+<div id="main" class="flex justify-center items-center">
     <div class="flex flex-row flex-wrap">
-        <div class="flex flex-col mx-10 my-12 justify-center items-center text-center gap-3">
-            <a href="/#/{params.language}/members">Look All Members</a>
-            <FacePic id={params.id} rounded="xl" w="w-[40vh]" h="max-h-[40vh]" lang="{params.language}"></FacePic>
+        <div class="flex flex-col mx-10 my-20 justify-center items-center gap-3">
+            <div class="absolute w-screen h-[40vh] z-[-1] top-0 bg-no-repeat bg-cover bg-center shadow-lg"
+                 style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/0.jpg')"></div>
+
+            <FacePic id={params.id} rounded="full" w="w-[40vh]" h="max-h-[40vh] shadow-lg shadow-black/40" do_animate="true" lang="{params.language}"></FacePic>
             <i class="font-bold text-3xl my-3">{name}</i>
             <a href="/#/{params.language}/artworks/{artwork_info.id}" class="text-2xl font-bold">
                 {#if artwork_info.member_title}
@@ -60,6 +62,7 @@
                     {/if}
                 </a>
             {/each}
+            <a href="/#/{params.language}/members">Look All Members</a>
         </div>
     </div>
 </div>
