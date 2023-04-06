@@ -27,6 +27,7 @@
         '/:language/about': About,
         '/:language/artworks': Artworks,
         '/:language/artworks/:id': Artwork,
+        '/:language/artworks/:id/:page': Artwork,
         '/:language/members': Members,
         '/:language/members/:id': Members,
         '/:language/member/:id': Member,

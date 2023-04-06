@@ -1,6 +1,7 @@
 <script lang="ts">
     import FacePic from "../Components/FacePic.svelte";
     import {information} from '../lib/info';
+    import {onMount} from "svelte";
 
     export let params: object = {};
 
@@ -16,7 +17,7 @@
     let img_range: Array<Number> = artwork_info.record.images;
     let face_pic_width_vw = parseInt(String(100.0 / (team_members.length)));
 
-    let current_page = 'description'
+    let current_page = params.page || 'description'
     $:image_num = 0;
 
     // This line in necessary to make TailwindCSS know what tags need to be used
@@ -83,15 +84,11 @@
         document.getElementById(`${page_name}-page`).classList.remove('hidden')
     }
 
-    const stop_red_btn = () => clearInterval(set_initial_btn)
-
-    let set_initial_btn = setInterval(() => {
-        if (document.getElementById('description-btn').classList.contains(`to-cyan-900/10`)) {
-            document.getElementById('description-btn').classList.add(`to-cyan-900`);
-            document.getElementById('description-btn').classList.remove(`to-cyan-900/10`);
-            stop_red_btn()
-        } else return
-    }, 100)
+    onMount(() => {
+        const current_page_color = pages.find(page => page.name == current_page).color;
+        document.getElementById(`${current_page}-btn`).classList.add(`to-${current_page_color}-900`);
+        document.getElementById(`${current_page}-btn`).classList.remove(`to-${current_page_color}-900/10`);
+    })
 </script>
 
 
@@ -127,12 +124,13 @@
             <div id="{page.name}-btn"
                  class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-xs cursor-pointer"
                  on:click={e => {
-                    if (current_page === page.name) return
+                        if (current_page === page.name) return
+                     window.location.href = `/#/${params.language}/artworks/${artwork_info.id}/${page.name}`
                     current_page = page.name
                     console.log(`switching to ${page.name}`)
                     e.target.classList.toggle(`to-${page.color}-900`)
                     e.target.classList.toggle(`to-${page.color}-900/10`)
-                    for (let i = 0; i < pages.length; i++) {
+                     for (let i = 0; i < pages.length; i++) {
                         if (pages[i].name !== page.name) {
                             hide_page(pages[i].name)
                             document.getElementById(`${pages[i].name}-btn`).classList.remove(`to-${pages[i].color}-900`);
@@ -150,7 +148,7 @@
 
     <div class="w-11/12 bg-gradient-to-tr from-white/5 to-violet-600/5 rounded-xl m-5 text-gray-300 font-bolder shadow-black/50 shadow-2xl">
 
-        <div class="hidden p-5" id="creators-page">
+        <div class="{(current_page == 'creators') ? '' : 'hidden'} p-5" id="creators-page">
             <div class="justify-evenly flex flex-wrap">
                 {#each team_members as member}
                     <div class="mx-1 w-48 md:w-64 font-light text-center flex flex-col justify-center items-center">
@@ -164,8 +162,8 @@
             </div>
         </div>
 
-        <div id="description-page" class="p-0 flex flex-wrap flex-row items-center justify-center">
-
+        <div class="p-0 flex flex-wrap flex-row items-center justify-center {(current_page == 'description') ? '' : 'hidden'}"
+             id="description-page" >
 <!--            Image Progress Bar-->
             <div class="w-[96%] bg-white-10 flex flex-row justify-center">
                 <div class="bg-gradient-to-l from-violet-500 to-transparent h-1 transition-all duration-500"
@@ -197,10 +195,12 @@
             </div>
         </div>
 
-        <div id="image_record-page" class="hidden">
+        <div id="image_record-page" class="{(current_page == 'image_record') ? '' : 'hidden'}">
+            <div class="rounded-xl w-full h-[80vh] flex flex-row">
+            </div>
         </div>
 
-        <div id="video_record-page" class="hidden">
+        <div id="video_record-page" class="{(current_page == 'video_record') ? '' : 'hidden'}">
             <iframe class="w-full h-[80vh] rounded-xl"
                     src="https://www.youtube.com/embed/{artwork_info.record.videos.youtube || 'dQw4w9WgXcQ'}"
                     title="YouTube video player"
