@@ -206,7 +206,7 @@
             PL3: new THREE.PointLight(0x919eff, 4, 4, 2),
             PL4: new THREE.PointLight(0x919eff, 4, 4, 2),
             SPL1: new THREE.SpotLight(0xffffff, 5, 3, 50, Math.PI / 2, 1),
-            SPL2: new THREE.SpotLight(0xffffff, 6, 3, 50, Math.PI / 2, 1),
+            SPL2: new THREE.SpotLight(0xffffff, 16, 3, 50, Math.PI / 2, 1),
         };
 
         lights.PL1.position.set(0.35, -0.9, -3);
@@ -668,7 +668,7 @@
 
 <div id="main" class="w-screen h-screen fixed">
     <div id="loading-progress"
-         class="flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-violet-500 to-orange-500">
+         class="flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-violet-500 to-orange-500 transition-all duration-300">
         0 %
     </div>
     <!-- <canvas class="three"></canvas> -->
