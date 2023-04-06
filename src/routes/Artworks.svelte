@@ -50,6 +50,8 @@
         }
     }, 1000)
 
+    const tailwind_rotates = ['rotate-1', 'rotate-2', 'rotate-3', 'rotate-6'];
+
 </script>
 <div class="pt-12">
     <h1 class="text-center text-5xl font-extrabold text-white m-5 lg:text-white/0">
@@ -57,11 +59,12 @@
     </h1>
     <div class="flex flex-wrap relative left-0 mx-20 items-center justify-center text-center ">
         {#each artworks_info as team}
-            <div class="p-3">
-                <a class="font-extrabold blur-2xl text-cyan-50/80 text-2xl  hover:blur-3xl p-5 ease-in-out transition-all duration-1000 cursor-pointer"
+            <div class="p-3 {tailwind_rotates[Math.floor(Math.random() * tailwind_rotates.length)]}">
+                <a class="font-extrabold blur-2xl text-cyan-50/80 text-2xl hover:blur-3xl p-5 ease-in-out transition-all duration-1000 cursor-pointer"
                    on:click={() => window.location.href = `#/${params.language}/artworks/${team.id}`}
-                   on:mouseover={mouse_on_title}
-                   id={team.id}>{team.title} </a>
+                   on:mouseover={mouse_on_title} id={team.id}>
+                    {team.title}
+                </a>
             </div>
         {/each}
         <br>
@@ -74,21 +77,22 @@
             『{hovered_title.innerHTML}』
             {is_en ? "Description" : "作品簡介"}：
         </h2>
-        {@html hovered_title_link}
-        <p id="preview-description" class="my-5">
-            {is_en ? 'Hover' : "點擊上面的作品名稱，作品簡述會顯示在這裡喔！"}
-        </p>
-        <div class="shadow-sm shadow-black border-none p-3 rounded bg-white/5 w-fit">
-            <h2 class="mb-5 py-2 inline">&nbsp;
+        <div class="shadow-sm shadow-black border-none p-3 rounded bg-white/5 w-fit inline">
+            <h2 class="mb-5 py-2 inline">
                 {is_en ? "Creator" : '創作者'}：
             </h2>
             <p class="inline">
                 {#each artworks_info[hovered_title.id].members as member}
-                    <a class="cursor-pointer hover:border-b-2"
-                       href="/#/{params.language}/member/{member.id}">{all_info.member_names[member.id]}</a>
+                    <a class="cursor-pointer hover:border-b-2" href="/#/{params.language}/member/{member.id}">
+                        {all_info.member_names[member.id]}
+                    </a>
                 {/each}
             </p>
         </div>
+        {@html hovered_title_link}
+        <p id="preview-description" class="my-5">
+            {is_en ? 'Hover' : "點擊上面的作品名稱，作品簡述會顯示在這裡喔！"}
+        </p>
         <br>
     </div>
 </div>
