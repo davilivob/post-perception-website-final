@@ -60,7 +60,7 @@
     <div class="flex flex-wrap relative left-0 mx-20 items-center justify-center text-center ">
         {#each artworks_info as team}
             <div class="p-3 {tailwind_rotates[Math.floor(Math.random() * tailwind_rotates.length)]}">
-                <a class="font-extrabold blur-2xl text-cyan-50/80 text-2xl hover:blur-3xl p-5 ease-in-out transition-all duration-1000 cursor-pointer"
+                <a class="font-extrabold blur-2xl text-cyan-50/80 text-2xl hover:blur-3xl p-5 ease-in-out transition-all duration-700 cursor-pointer"
                    on:click={() => window.location.href = `#/${params.language}/artworks/${team.id}`}
                    on:mouseover={mouse_on_title} id={team.id}>
                     {team.title}
