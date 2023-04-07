@@ -2,45 +2,45 @@ import {readable} from 'svelte/store';
 
 const information_json = {
     zh: {
-        member_names: {
-            1: "白維田",
-            2: "蒲欣妤",
-            3: "許睿智",
-            4: "朱紹筠",
-            5: "吳黛葳",
-            6: "張珈瑄",
-            7: "高哲淯",
-            8: "蔡尚騰",
-            10: "翁國愷",
-            14: "李頡",
-            15: "余宗霖",
-            16: "蔡政澔",
-            17: "唐昱翔",
-            18: "潘玟瑜",
-            19: "廖婉淩",
-            20: "江愷希",
-            21: "莊恩齊",
-            22: "陳政維",
-            23: "吳佩純",
-            25: "陳妍姍",
-            26: "林琮澔",
-            27: "陳誌陽",
-            29: "簡祐呈",
-            30: "林慧儒",
-            31: "徐浩瀚",
-            32: "邱傑義",
-            33: "韓承芯",
-            34: "劉吉榮",
-            35: "楊茗柯",
-            36: "胡品孜",
-            37: "李士朋",
-            38: "王嘉郁",
-            39: "丁常恩",
-            40: "王暉蒽",
-            42: "朱亦萱",
-            58: "蘇乃俞",
-            59: "林珈誼",
-            60: "周詩涵",
+        personal_info: {
+            1: {name: "白維田"},
+            2: {name: "蒲欣妤"},
+            3: {name: "許睿智"},
+            4: {name: "朱紹筠"},
+            5: {name: "吳黛葳"},
+            6: {name: "張珈瑄"},
+            7: {name: "高哲淯"},
+            8: {name: "蔡尚騰"},
+            10: {name: "翁國愷"},
+            14: {name: "李頡"},
+            15: {name: "余宗霖"},
+            16: {name: "蔡政澔"},
+            17: {name: "唐昱翔"},
+            18: {name: "潘玟瑜"},
+            19: {name: "廖婉淩"},
+            20: {name: "江愷希"},
+            21: {name: "莊恩齊"},
+            22: {name: "陳政維"},
+            23: {name: "吳佩純"},
+            25: {name: "陳妍姍"},
+            26: {name: "林琮澔"},
+            27: {name: "陳誌陽"},
+            29: {name: "簡祐呈"},
+            30: {name: "林慧儒"},
+            31: {name: "徐浩瀚"},
+            32: {name: "邱傑義"},
+            33: {name: "韓承芯"},
+            34: {name: "劉吉榮"},
+            35: {name: "楊茗柯"},
+            36: {name: "胡品孜"},
+            37: {name: "李士朋"},
+            38: {name: "王嘉郁"},
+            39: {name: "丁常恩"},
+            40: {name: "王暉蒽"},
+            42: {name: "朱亦萱"},
+            58: {name: "蘇乃俞"},
+            59: {name: "林珈誼"},
+            60: {name: "周詩涵"},
         },
         art_teams: [
             {
@@ -52,7 +52,7 @@ const information_json = {
                     },
                     {
                         id: 22,
-                        title: "3D 建模、動畫設計",
+                        title: "3D建模、動畫設計",
                     },
                     {
                         id: 32,
@@ -60,7 +60,7 @@ const information_json = {
                     },
                     {
                         id: 34,
-                        title: "3D 互動設計",
+                        title: "3D互動設計",
                     }
                 ],
                 title: "弗朗提爾貳號",
@@ -75,7 +75,7 @@ const information_json = {
                 media: "膠合玻璃, 電子材料, 彩色有聲, 18'00\", 彩⾊/有聲, 2023",
                 size: "200cm x 200cm x 200cm",
                 record: {
-                    images: [2, 17],
+                    images: [2, 0],
                     videos: {
                         youtube: "dQw4w9WgXcQ"
                     },
@@ -241,7 +241,7 @@ const information_json = {
                 media: "彩色/有聲 2023（影片長度後期補上）",
                 size: "",
                 record: {
-                    images: [4, 1],
+                    images: [4, 0],
                     videos: [0, 1]
                 }
             },
@@ -278,7 +278,7 @@ const information_json = {
                 `,
                 media: "視場地而定, 2023",
                 size: "", record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -396,7 +396,7 @@ const information_json = {
                 media: "電視、混音器、蜂鳴片、音響、紙本、鋼筆、紗幕、檯燈、傢俱",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -425,7 +425,7 @@ const information_json = {
                 media: "自製遙控裝置",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -472,7 +472,7 @@ const information_json = {
                 media: "雙頻道錄像/彩色/有聲",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             }
@@ -715,45 +715,45 @@ const information_json = {
         ]
     },
     en: {
-        member_names: {
-            1: "Pi Wei Tian",
-            2: "Poo Xin Yu",
-            3: "Hsueh Ruei-Jhih",
-            4: "Grace Chu",
-            5: "Wu Dai Wei",
-            6: "Chiang Jia Hsuan",
-            7: "Guo Zhe Yu",
-            8: "Tsai Shang-Teng",
-            10: "Weng Kuo Kai",
-            14: "Lee Jia",
-            15: "Yu Tsung Lin",
-            16: "Tsai Cheng-Hao",
-            17: "Tang Yu Xiang",
-            18: "Peng Wen Yu",
-            19: "Liao Wan Ling",
-            20: "Chiang Kai Hsi",
-            21: "Chuang En Chieh",
-            22: "Chen Cheng Wei",
-            23: "Wu Pei Chun",
-            25: "Chien Yen Sheng",
-            26: "Lin Tsung Hao",
-            27: "Chen Chih Yang",
-            29: "Jian Yu Cheng",
-            30: "Lin Hui Ru",
-            31: "Hsu Hao Han",
-            32: "Chiu Chieh Yi",
-            33: "Han Cheng Hsin",
-            34: "Liou Ji Rong",
-            35: "Yang Ming Ke",
-            36: "Hu Pin Zi",
-            37: "Lee Shih Peng",
-            38: "Wang Chia Yu",
-            39: "Ding Chang En",
-            40: "Wang Hui En",
-            42: "Chiu Yi Hsuan",
-            58: "Tzu Nai Yu",
-            59: "Lin Jia Yi",
-            60: "Chou Shih Han",
+        personal_info: {
+            1: {name: "Pi Wei Tian"},
+            2: {name: "Poo Xin Yu"},
+            3: {name: "Hsueh Ruei-Jhih"},
+            4: {name: "Grace Chu"},
+            5: {name: "Wu Dai Wei"},
+            6: {name: "Chiang Jia Hsuan"},
+            7: {name: "Guo Zhe Yu"},
+            8: {name: "Tsai Shang-Teng"},
+            10: {name: "Weng Kuo Kai"},
+            14: {name: "Lee Jia"},
+            15: {name: "Yu Tsung Lin"},
+            16: {name: "Tsai Cheng-Hao"},
+            17: {name: "Tang Yu Xiang"},
+            18: {name: "Peng Wen Yu"},
+            19: {name: "Liao Wan Ling"},
+            20: {name: "Chiang Kai Hsi"},
+            21: {name: "Chuang En Chieh"},
+            22: {name: "Chen Cheng Wei"},
+            23: {name: "Wu Pei Chun"},
+            25: {name: "Chien Yen Sheng"},
+            26: {name: "Lin Tsung Hao"},
+            27: {name: "Chen Chih Yang"},
+            29: {name: "Jian Yu Cheng"},
+            30: {name: "Lin Hui Ru"},
+            31: {name: "Hsu Hao Han"},
+            32: {name: "Chiu Chieh Yi"},
+            33: {name: "Han Cheng Hsin"},
+            34: {name: "Liou Ji Rong"},
+            35: {name: "Yang Ming Ke"},
+            36: {name: "Hu Pin Zi"},
+            37: {name: "Lee Shih Peng"},
+            38: {name: "Wang Chia Yu"},
+            39: {name: "Ding Chang En"},
+            40: {name: "Wang Hui En"},
+            42: {name: "Chiu Yi Hsuan"},
+            58: {name: "Tzu Nai Yu"},
+            59: {name: "Lin Jia Yi"},
+            60: {name: "Chou Shih Han"},
         },
         art_teams: [
             {
@@ -876,7 +876,7 @@ const information_json = {
                 `,
                 media: "",
                 size: "", record: {
-                    images: [4, 1],
+                    images: [4, 0],
                     videos: [0, 1]
                 }
             },
@@ -938,7 +938,7 @@ const information_json = {
                 `,
                 media: "",
                 size: "", record: {
-                    images: [5, 1],
+                    images: [5, 0],
                     videos: [0, 1]
                 }
             },
@@ -999,7 +999,7 @@ const information_json = {
                 `,
                 media: "Designated by the exhibition space",
                 size: "", record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -1108,7 +1108,7 @@ const information_json = {
                 media: "Television, Mixer, Speaker, Sound System, Paper, Pen, Curtain, Table Lamp, Furniture",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -1130,7 +1130,7 @@ const information_json = {
                 media: "Self-made Remote Control Device",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             },
@@ -1170,7 +1170,7 @@ const information_json = {
                 media: "Duo-channel video/Color/With Sound",
                 size: "",
                 record: {
-                    images: [0, 1],
+                    images: [0, 0],
                     videos: [0, 1]
                 }
             }
