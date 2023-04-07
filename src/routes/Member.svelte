@@ -61,7 +61,7 @@
     console.log(is_mobile)
 </script>
 
-<div id="main" class="flex justify-center items-center">
+<div id="main" class="flex justify-center items-center pt-12">
     <div class="flex flex-row flex-wrap">
         <div class="flex flex-col mx-10 mt-10 justify-center items-center gap-3">
             <div class="fixed w-screen h-screen z-[-1] top-0 bg-repeat-y bg-cover bg-center shadow-lg"

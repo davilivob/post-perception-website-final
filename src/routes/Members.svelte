@@ -120,7 +120,7 @@
 
 </script>
 
-<div class="flex flex-col items-center m-5 mt-12">
+<div class="flex flex-col items-center pt-16">
     <h1 class="text-center text-5xl font-black my-3 text-white lg:hidden">
         {is_en ? "MEMBERS" : "參展人員"}
     </h1>

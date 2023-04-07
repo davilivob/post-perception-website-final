@@ -6,6 +6,6 @@
     let all_info = $information[params.language];
 </script>
 
-<div class="mt-16">
+<div class="pt-16">
     <h1>This is records page</h1>
 </div>
