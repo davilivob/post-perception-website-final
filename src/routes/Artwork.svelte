@@ -137,19 +137,15 @@
 <!--</div>-->
 
 <div class="mx-3 mt-12 text-center">
-    {#if artwork_info.id >= 1}
-        <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id - 1}">
-            <a class="fa-solid fa-arrow-left"></a>
-            {all_info.art_teams[artwork_info.id - 1].title}
-        </a>
-    {/if}
+    <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{(artwork_info.id >= 1) ? (artwork_info.id - 1) : 12}">
+        <a class="fa-solid fa-arrow-left"></a>
+        {all_info.art_teams[(artwork_info.id >= 1) ? (artwork_info.id - 1) : 12].title}
+    </a>
     <h1 class="text-center text-5xl font-black m-1 text-white {(artwork_info.id == 4) ? 'break-all' : ''}">{artwork_info.title}</h1>
-    {#if artwork_info.id < 12}
-        <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{artwork_info.id + 1}">
-            {all_info.art_teams[artwork_info.id + 1].title}
-            <a class="fa-solid fa-arrow-right"></a>
-        </a>
-    {/if}
+    <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{(artwork_info.id < 12) ? (artwork_info.id + 1) : 0}">
+        {artwork_info.id < 12 ? all_info.art_teams[artwork_info.id + 1].title : all_info.art_teams[0].title}
+        <a class="fa-solid fa-arrow-right"></a>
+    </a>
 
     <h2 class="text-center text-xl font-bold my-1">{artwork_info.format}</h2>
     <h3 class="text-center text-s font-extralight my-1 mx-2">{artwork_info.media}</h3>
