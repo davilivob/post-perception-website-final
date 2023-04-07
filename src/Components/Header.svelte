@@ -3,7 +3,7 @@
     export let page: string = 'home';
 
     let is_en: boolean = language === 'en';
-    let URL: string = window.location.href
+    let URL: string = window.location.href;
 
     function switch_language() {
         URL = window.location.href;
@@ -33,7 +33,7 @@
 </script>
 
 <div id="navbar"
-     class="fixed w-screen h-16 backdrop-blur-2xl z-30 flex flex-row items-center justify-between bg-gradient-to-br from-transparent to-black/30 shadow-2xl shadow-black/50">
+     class="fixed w-screen h-16 backdrop-blur-sm z-30 flex flex-row items-center justify-between bg-gradient-to-b from-transparent to-black/20 shadow-2xl shadow-black/60">
     <div class="flex justify-between items-center font-extrabold">
         <a href="/#/{language}/home" class="font-extrabold">
             <h1 class="text-white not-italic text-4xl left-5 tracking-tighter flex flex-row justify-center items-center"
