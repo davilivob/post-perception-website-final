@@ -1,9 +1,16 @@
 <script>
+    import {information} from '../lib/info';
     import * as THREE from "three";
     import * as TWEEN from "tween";
     import {loadModel} from "../lib/LoadModel";
     import {onMount} from "svelte";
 
+    export let params = {};
+
+    const is_en = params.language == 'en';
+    let all_info = $information[params.language];
+    const artworks_info = all_info.art_teams;
+    $:current_work_info = artworks_info[params.work_id || 0].description;
 
     let clickStartX = 0;
     let clickEndX = 0;
@@ -144,11 +151,11 @@
             if (boolAnimate && mode === 0) {
                 checkDirectionOfMouseSwipe();
                 if (boolChange) {
-                    var firstElement = items.shift();
+                    let firstElement = items.shift();
                     items.push(firstElement);
                 }
                 if (boolChange2) {
-                    var lastElement = items.pop();
+                    let lastElement = items.pop();
                     items.unshift(lastElement);
                 }
             }
@@ -177,11 +184,11 @@
             if (boolAnimate && mode === 0) {
                 checkDirection();
                 if (boolChange) {
-                    var firstElement = items.shift();
+                    let firstElement = items.shift();
                     items.push(firstElement);
                 }
                 if (boolChange2) {
-                    var lastElement = items.pop();
+                    let lastElement = items.pop();
                     items.unshift(lastElement);
                 }
             }
@@ -259,7 +266,7 @@
                 }
                 exit.style.opacity = "0";
                 exit.style.transform = "translateY(10000px)";
-                information.style.opacity = "0";
+                information_dom.style.opacity = "0";
 
             } else if (mode === 1) {
                 if (boolDevice) {
@@ -271,9 +278,9 @@
                         .to({x: 0.55, z: -2.5}, 1000)
                         .start();
 
-                    information.style.width = "75%"
-                    information.style.height = "60%"
-                    information.style.borderRadius = "10px";
+                    information_dom.style.width = "75%"
+                    information_dom.style.height = "60%"
+                    information_dom.style.borderRadius = "10px";
                     informationText.style.fontSize = "11px";
                     informationText.style.padding = "8px";
                     informationText.style.margin = "8px";
@@ -286,10 +293,10 @@
                         .to({x: 0.6, z: -2.5}, 1000)
                         .start();
 
-                    information.style.width = "25%"
-                    information.style.height = "50%"
-                    information.style.borderRadius = "25px";
-                    information.style.transform = "translate(-95%, -50%)";
+                    information_dom.style.width = "25%"
+                    information_dom.style.height = "50%"
+                    information_dom.style.borderRadius = "25px";
+                    information_dom.style.transform = "translate(-95%, -50%)";
                     informationText.style.fontSize = "31px";
                     informationText.style.padding = "20px";
                     informationText.style.margin = "20px";
@@ -301,7 +308,7 @@
                 exit.style.opacity = "0.7";
                 exit.style.transform = "translateY(0px)";
                 name.style.opacity = "0";
-                information.style.opacity = "0.7";
+                information_dom.style.opacity = "0.7";
             }
         }
     }
@@ -321,7 +328,6 @@
             model.material = glassesMaterial;
             scene.add(model);
         }
-
     }
 
     function checkDirectionOfMouseSwipe() {
@@ -352,7 +358,7 @@
 
             for (let i = 0; i < items.length; i++) {
                 if (i - 1 === -1) {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({
                             x: positionList[items.length - 1].x,
                             y: positionList[items.length - 1].y,
@@ -364,7 +370,7 @@
                         });
                     tween.start();
                 } else {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -399,7 +405,7 @@
 
             for (let i = 0; i < items.length; i++) {
                 if (i + 1 === items.length) {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[0].x, y: positionList[0].y, z: positionList[0].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -407,7 +413,7 @@
                         });
                     tween.start();
                 } else {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -422,7 +428,7 @@
             boolAnimate = true;
         }
         name.innerHTML = worksName[index];
-        informationText.innerHTML = worksInformation[index];
+        // informationText.innerHTML = worksInformation[index];
     }
 
     function checkDirection() {
@@ -454,7 +460,7 @@
 
             for (let i = 0; i < items.length; i++) {
                 if (i - 1 === -1) {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({
                             x: positionList[items.length - 1].x,
                             y: positionList[items.length - 1].y,
@@ -466,7 +472,7 @@
                         });
                     tween.start();
                 } else {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -501,7 +507,7 @@
 
             for (let i = 0; i < items.length; i++) {
                 if (i + 1 === items.length) {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[0].x, y: positionList[0].y, z: positionList[0].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -509,7 +515,7 @@
                         });
                     tween.start();
                 } else {
-                    var tween = new TWEEN.Tween(items[i].position)
+                    let tween = new TWEEN.Tween(items[i].position)
                         .to({x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z}, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
@@ -524,7 +530,7 @@
             boolAnimate = true;
         }
         name.innerHTML = worksName[index];
-        informationText.innerHTML = worksInformation[index];
+        // informationText.innerHTML = worksInformation[index];
     }
 
     function onMouseDown(event) {
@@ -577,14 +583,14 @@
         render();
     }
 
-    let progressBar, name, exit, information, informationText;
+    let progressBar, name, exit, information_dom, informationText;
     //Set Model
 
     onMount(async () => {
         progressBar = document.getElementById('loading-progress');
         name = document.querySelector("#work-name");  //作品名稱
         exit = document.querySelector("#exit");  //點模型後需要跳出去的ui
-        information = document.querySelector("#work-information");  //資訊欄
+        information_dom = document.querySelector("#work-information");  //資訊欄
         informationText = document.querySelector("#text");  //資訊欄裡面的字
 
         await loadModel('/home/static/gltf/grate.gltf').then(model => grate = model);
@@ -625,12 +631,10 @@
         scene.add(grate3);
         scene.add(text);
 
-        // Scroll to bottom when startup
-        // window.scrollTo({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
-
 
         name.innerHTML = worksName[index];
-        informationText.innerHTML = worksInformation[index];
+        // informationText.innerHTML = worksInformation[index];
+        current_work_info = artworks_info[index].description;
 
         //SetItem
         setItemPosition(boolDevice);
@@ -656,7 +660,6 @@
 
         document.getElementById('main').appendChild(renderer.domElement);
 
-
         //Update
         animate();
     })
@@ -668,7 +671,7 @@
 
 <div id="main" class="w-screen h-screen fixed">
     <div id="loading-progress"
-         class="flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-violet-500 to-orange-500 transition-all duration-300">
+         class="h-8 flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-sky-500 to-amber-500 duration-300">
         0 %
     </div>
     <!-- <canvas class="three"></canvas> -->
@@ -676,7 +679,7 @@
         <div id="work-name"></div>
         <div id="exit"></div>
         <div id="work-information">
-            <p id="text">abc</p>
+            <p id="text">{@html current_work_info}</p>
         </div>
     </div>
 </div>
