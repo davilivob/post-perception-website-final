@@ -11,10 +11,6 @@
         location.reload();
     }
 
-    function switch_page(path) {
-
-    }
-
     const links = [
         {id: 0, en: 'home', zh: '首頁'},
         {id: 1, en: 'about', zh: '關於'},
@@ -32,17 +28,20 @@
         menu_icon.classList.toggle('hidden');
     }
 
+    console.log(language)
 
 </script>
 
 <div id="navbar"
      class="fixed w-screen h-16 backdrop-blur-2xl z-30 flex flex-row items-center justify-between bg-gradient-to-br from-transparent to-black/30 shadow-2xl shadow-black/50">
     <div class="flex justify-between items-center font-extrabold">
-        <a href="#/{language}/" class="font-extrabold">
+        <a href="/#/{language}/home" class="font-extrabold">
             <h1 class="text-white not-italic text-4xl left-5 tracking-tighter flex flex-row justify-center items-center"
                 id="header-title">
                 <img src='/images/website/logo/logo200.gif' alt="Logo" class="h-16">
-                <a class="hidden sm:inline shadow-black transform-all duration-500 ease-in-out">{ is_en ? 'Post-Perception' : '後知後覺後' }</a>
+                <a class="hidden sm:inline shadow-black transform-all duration-500 ease-in-out">
+                    { is_en ? 'Post-Perception' : '後知後覺後' }
+                </a>
             </h1>
         </a>
     </div>
