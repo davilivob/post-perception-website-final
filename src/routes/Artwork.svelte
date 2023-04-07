@@ -136,7 +136,7 @@
 <!--    </a>-->
 <!--</div>-->
 
-<div class="mx-3 mt-12 text-center">
+<div class="mx-3 pt-16 text-center">
     <a class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out" href="/#/redirect/@{params.language}@artworks@{(artwork_info.id >= 1) ? (artwork_info.id - 1) : 12}">
         <a class="fa-solid fa-arrow-left"></a>
         {all_info.art_teams[(artwork_info.id >= 1) ? (artwork_info.id - 1) : 12].title}
