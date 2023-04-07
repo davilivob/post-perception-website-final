@@ -238,15 +238,15 @@
                      style="width: {parseInt((record_img_num) * 100 / (img_range[1] - 1) / 4).toString()}%"></div>
             </div>
             <div class="w-full h-[80vh]">
-                <div class="h-[72vh] w-full bg-no-repeat bg-center bg-contain bg-black/60 rounded-t-xl flex flex-row justify-between items-center px-3" id="record-image-container"
+                <div class="h-[72vh] w-full bg-no-repeat bg-center bg-contain bg-black/60 rounded-t-xl flex flex-row justify-between items-center" id="record-image-container"
                      style="background-image: url('{record_images[record_img_num]}')">
-                    <a class="fa-solid fa-chevron-left text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
+                    <a class="fa-solid fa-chevron-left text-3xl cursor-pointer text-white/50 hover:text-white duration-300 pl-3 pr-[20vw] py-[20vh]"
                         on:click={() => {
                             if (record_img_num > 0) record_img_num -= 1;
                             else record_img_num = record_images.length - 1;
                         }}
                     ></a>
-                    <a class="fa-solid fa-chevron-right text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
+                    <a class="fa-solid fa-chevron-right text-3xl cursor-pointer text-white/50 hover:text-white duration-300 pr-3 pl-[20vw] py-[20vh]"
                         on:click={() => {
                            if (record_img_num < record_images.length - 1) record_img_num += 1;
                            else record_img_num = 0;
