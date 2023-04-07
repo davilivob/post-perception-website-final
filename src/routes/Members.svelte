@@ -97,9 +97,7 @@
         btn.classList.add(`text-black`);
         btn.classList.add('shadow-lg')
         btn.classList.add('shadow-black/50')
-        btn.classList.add('text-4xl')
         btn.classList.add('font-bold')
-        btn.classList.add('m-3')
     }
 
     function dark_btn(btn) {
@@ -111,9 +109,6 @@
         btn.classList.remove(`text-black`);
         btn.classList.remove('shadow-lg')
         btn.classList.remove('shadow-black/50')
-        btn.classList.remove('text-4xl')
-        btn.classList.remove('font-bold')
-        btn.classList.remove('m-3')
     }
 
     onMount(() => {
@@ -133,7 +128,7 @@
     <div class="flex flex-row flex-wrap py-5 items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
         {#each pages as page}
             <div id="{page.name}-btn"
-                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer hover:text-black hover:bg-white"
+                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer hover:text-black hover:bg-white/50"
                  on:click={e => {
                     window.location.href = `/#/${params.language}/members/${page.id}`
                     if (current_page === page.name) return
