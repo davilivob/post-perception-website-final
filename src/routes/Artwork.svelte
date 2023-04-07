@@ -45,9 +45,34 @@
         current_page = default_page;
     }
 
-    let recorded_images = [];
+    let record_images = [];
     for (let i = img_range[0]; i < img_range[1] + img_range[0]; i ++) {
-        recorded_images.push(i);
+        record_images.push(`/images/exhibition/artwork_photos/${artwork_info.id}/${i}.jpg`);
+    }
+
+    console.log(record_images)
+    if(record_images.length == 0) {
+        record_images = [
+            '/images/exhibition/artwork_photos/0/2.jpg',
+            '/images/exhibition/artwork_photos/0/3.jpg',
+            '/images/exhibition/artwork_photos/0/4.jpg',
+            '/images/exhibition/artwork_photos/0/5.jpg',
+            '/images/exhibition/artwork_photos/0/6.jpg',
+            '/images/exhibition/artwork_photos/0/7.jpg',
+            '/images/exhibition/artwork_photos/0/8.jpg',
+            '/images/exhibition/artwork_photos/0/9.jpg',
+            '/images/exhibition/artwork_photos/0/10.jpg',
+            '/images/exhibition/artwork_photos/0/11.jpg',
+            '/images/exhibition/artwork_photos/0/12.jpg',
+            '/images/exhibition/artwork_photos/0/13.jpg',
+            '/images/exhibition/artwork_photos/0/14.jpg',
+            '/images/exhibition/artwork_photos/0/15.jpg',
+            '/images/exhibition/artwork_photos/0/16.jpg',
+            '/images/exhibition/artwork_photos/0/17.jpg',
+            '/images/exhibition/artwork_photos/0/18.jpg',
+            '/images/exhibition/artwork_photos/0/19.jpg',
+            '/images/exhibition/artwork_photos/0/20.jpg',
+        ]
     }
 
     function next_img() {
@@ -165,7 +190,7 @@
                 {#each team_members as member}
                     <div class="mx-1 w-48 md:w-64 font-light text-center flex flex-col justify-center items-center">
                         <FacePic id={member.id} lang="{params.language}"></FacePic>
-                        <div class="desc text-xl mt-1">{all_info.member_names[member.id]}</div>
+                        <div class="desc text-xl mt-1">{all_info.personal_info[member.id].name}</div>
                         <div class="overlay">
                             <div class="text-sm">{member.title}</div>
                         </div>
@@ -218,27 +243,27 @@
             </div>
             <div class="w-full h-[80vh]">
                 <div class="h-[72vh] w-full bg-no-repeat bg-center bg-contain bg-black/60 rounded-t-xl flex flex-row justify-between items-center px-3" id="record-image-container"
-                     style="background-image: url('/images/exhibition/artwork_photos/{artwork_info.id}/{recorded_images[record_img_num]}.jpg')">
+                     style="background-image: url('{record_images[record_img_num]}')">
                     <a class="fa-solid fa-chevron-left text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
                         on:click={() => {
                             if (record_img_num > 0) record_img_num -= 1;
-                            else record_img_num = recorded_images.length - 1;
+                            else record_img_num = record_images.length - 1;
                         }}
                     ></a>
                     <a class="fa-solid fa-chevron-right text-3xl cursor-pointer text-white/50 hover:text-white duration-300"
                         on:click={() => {
-                           if (record_img_num < recorded_images.length - 1) record_img_num += 1;
+                           if (record_img_num < record_images.length - 1) record_img_num += 1;
                            else record_img_num = 0;
                         }}
                     ></a>
                 </div>
                 <div class="overflow-x-auto w-full flex-row flex">
-                    {#each recorded_images as img_link}
+                    {#each record_images as img_link}
                         <div class="min-w-[11vw] h-[8vh] bg-no-repeat bg-cover bg-center border-2 hover:border-white border-white/0 cursor-pointer duration-200"
-                             style="background-image:url('/images/exhibition/artwork_photos/{artwork_info.id}/{img_link}.jpg'), url('/images/website/logo/logo200.gif');"
+                             style="background-image:url('{img_link}'), url('/images/website/logo/logo200.gif');"
                              on:click={() => {
-                                 record_img_num = recorded_images.indexOf(img_link);
-                                document.querySelector("#record-image-container").style.backgroundImage = `url('/images/exhibition/artwork_photos/${artwork_info.id}/${img_link}.jpg')`;
+                                 record_img_num = record_images.indexOf(img_link);
+                                document.querySelector("#record-image-container").style.backgroundImage = `url('${img_link}')`;
                              }}
                         >
                         </div>
