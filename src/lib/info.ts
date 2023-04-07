@@ -774,6 +774,10 @@ const information_json = {
                         title: "企劃",
                     },
                     {
+                        id: 58,
+                        title: "文書",
+                    },
+                    {
                         id: 39,
                         title: "組員",
                     }
@@ -1435,6 +1439,10 @@ const information_json = {
                     {
                         id: 6,
                         title: "企劃",
+                    },
+                    {
+                        id: 58,
+                        title: "文書",
                     },
                     {
                         id: 39,
