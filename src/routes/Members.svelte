@@ -13,9 +13,9 @@
     const all_info: object = $information[params.language];
     const members_info: object = all_info.admins
     let members: Array<Object> = []
-    for (const [key, value] of Object.entries(all_info.member_names)) {
+    for (const [key, value] of Object.entries(all_info.personal_info)) {
         members.push({
-            name: value,
+            name: value.name,
             id: key,
         })
     }
@@ -155,7 +155,7 @@
                         <div class="flex flex-col gap-1">
                             <FacePic id={member.id} lang="{params.language}"/>
                             <a class="font-extrabold mt-2 text-3xl">{member.title}</a>
-                            <a class="font-normal text-xl">{all_info.member_names[member.id]}</a>
+                            <a class="font-normal text-xl">{all_info.personal_info[member.id].name}</a>
                         </div>
                     {/each}
                 </div>

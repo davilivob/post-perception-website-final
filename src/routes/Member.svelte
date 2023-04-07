@@ -6,7 +6,7 @@
     const is_en = params.language == 'en';
     let all_info = $information[params.language];
 
-    const name = all_info.member_names[params.id];
+    const name = all_info.personal_info[params.id].name;
 
     let artwork_info = {};
     for (let team of all_info.art_teams) {

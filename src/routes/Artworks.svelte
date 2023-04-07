@@ -84,7 +84,7 @@
             <p class="inline">
                 {#each artworks_info[hovered_title.id].members as member}
                     <a class="cursor-pointer hover:border-b-2" href="/#/{params.language}/member/{member.id}">
-                        {all_info.member_names[member.id]}
+                        {all_info.personal_info[member.id].name}
                     </a>
                 {/each}
             </p>
