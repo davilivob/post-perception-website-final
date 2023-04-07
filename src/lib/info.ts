@@ -1,5 +1,178 @@
 import {readable} from 'svelte/store';
 
+const global_info = {
+    personal_info: {
+        1: {},
+        2: {},
+        3: {},
+        4: {},
+        5: {},
+        6: {},
+        7: {},
+        8: {
+            comment_board: `這個系所超爛，根本是藝術生產的垃圾場。<br>{youtube_link}`,
+            external_links: {
+                youtube: 'https://www.youtube.com/@teng2688/videos'
+            },
+        },
+        10: {},
+        14: {},
+        15: {},
+        16: {
+            comment_board: `主修新媒體跨域，創作時常以機械動力、燈光與感測裝置為核心媒材，嘗試進行某種美學的藝術實踐。持續學習各式技能中！`
+        },
+        17: {},
+        18: {},
+        19: {},
+        20: {},
+        21: {},
+        22: {},
+        23: {},
+        25: {},
+        26: {},
+        27: {
+            comment_board: `蛙🐸太酷了8⃣️`
+        },
+        29: {
+            comment_board: `{ig_link}`,
+            external_links: {
+                instagram: "https://www.instagram.com/kolyn._.j/",
+            },
+        },
+        30: {},
+        31: {
+            comment_board: `大家好，我是浩瀚是這次後之後覺後展覽的總召，希望各位喜歡這次的展覽~<br><br>
+                {facebook_link}<br><br>
+                {ig_link}<br><br>
+                偷偷置入社團廣告XD~<br><br>
+                歡迎北藝大的同學加入或是關注 妖山桌遊社(https://www.facebook.com/tnuaboardgame)
+            `,
+            external_links: {
+                facebook: "https://www.facebook.com/profile.php?id=100007032133407",
+                instagram: "https://www.instagram.com/cgco_haohan_x.x_/",
+            }
+        },
+        32: {},
+        33: {},
+        34: {},
+        35: {},
+        36: {},
+        37: {},
+        38: {},
+        39: {
+            comment_board: `
+                千禧年出生並成長於臺北，作品多為影像與空間裝置，關注於影像本質、空間場域與觀演關係。同時涉足劇場影像設計與製作，創作路上持續尋覓感官經驗與媒體性的可能。
+            `
+        },
+        40: {
+            comment_board: `{ig_link}`,
+            external_links: {
+                instagram: "https://www.instagram.com/afeiien/?igshid=YmMyMTA2M2Y%3D&fbclid=IwAR0i4sTLFWY2lu6x8G9PWeNF-it_nJog8hGcK8e1J2qrZUKQOoj7UrwWmFc",
+            }
+        },
+        42: {},
+        58: {},
+        59: {},
+        60: {},
+    },
+    art_teams: [
+        {
+            id: 0,
+            record: {
+                images: [2, 17],
+                videos: {
+                    youtube: "dQw4w9WgXcQ"
+                }
+            },
+        },
+        {
+            id: 1,
+            record: {
+                images: [5, 0],
+                videos: {}
+            },
+        },
+        {
+            id: 2,
+            record: {
+                images: [4, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 3,
+            record: {
+                images: [5, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 4,
+            record: {
+                images: [4, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 5,
+            record: {
+                images: [0, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 6,
+            record: {
+                images: [6, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 7,
+            record: {
+                images: [4, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 8,
+            record: {
+                images: [4, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 9,
+            record: {
+                images: [0, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 10,
+            record: {
+                images: [0, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 11,
+            record: {
+                images: [3, 0],
+                videos: {}
+            }
+        },
+        {
+            id: 12,
+            record: {
+                images: [0, 0],
+                videos: {}
+            }
+        }
+    ]
+};
+
+
 const information_json = {
     zh: {
         personal_info: {
@@ -74,31 +247,25 @@ const information_json = {
                 `,
                 media: "膠合玻璃, 電子材料, 彩色有聲, 18'00\", 彩⾊/有聲, 2023",
                 size: "200cm x 200cm x 200cm",
-                record: {
-                    images: [2, 0],
-                    videos: {
-                        youtube: "dQw4w9WgXcQ"
-                    },
-                }
             },
             {
                 id: 1,
                 members: [
                     {
                         id: 40,
-                        title: "",
+                        title: "組長",
                     },
                     {
                         id: 31,
-                        title: "",
+                        title: "程式設計",
                     },
                     {
                         id: 42,
-                        title: "",
+                        title: "美術設計",
                     },
                     {
                         id: 2,
-                        title: "",
+                        title: "美術設計",
                     },
                     {
                         id: 17,
@@ -106,7 +273,7 @@ const information_json = {
                     },
                     {
                         id: 8,
-                        title: "",
+                        title: "影像設計",
                     }
                 ],
                 title: "野視",
@@ -119,10 +286,7 @@ const information_json = {
                     -->主客體身份的轉換，使得觀眾重新思考觀看的意涵，並藉此推演觀眾與作品的角色定位並非二元的存在，而是如同光譜般瞬息萬變。
                 `,
                 media: "影像互動裝置",
-                size: "", record: {
-                    images: [5, 0],
-                    videos: {}
-                }
+                size: "",
             },
             {
                 id: 2,
@@ -155,10 +319,7 @@ const information_json = {
                     -->使觀者意識到世界中的矛盾與真實， 並討論對此種狀態的質疑與反思。
                 `,
                 media: "",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 3,
@@ -208,10 +369,7 @@ const information_json = {
                     -->皆遵守著多方資訊平衡與對等的邏輯去設計與製作，嘗試刺激玩家思考或定義何謂「主觀真實」。
                 `,
                 media: "",
-                size: "", record: {
-                    images: [5, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 4,
@@ -222,7 +380,7 @@ const information_json = {
                     },
                     {
                         id: 29,
-                        title: "",
+                        title: "3D模型設計，展場設計",
                     },
                     {
                         id: 58,
@@ -240,17 +398,13 @@ const information_json = {
                 `,
                 media: "彩色/有聲 2023（影片長度後期補上）",
                 size: "",
-                record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
             },
             {
                 id: 5,
                 members: [
                     {
                         id: 27,
-                        title: "",
+                        title: "冗員🥹",
                     },
                     {
                         id: 25,
@@ -262,7 +416,7 @@ const information_json = {
                     },
                     {
                         id: 6,
-                        title: "",
+                        title: "冗員",
                     },
                 ],
                 title: "夢尼瑪",
@@ -277,10 +431,7 @@ const information_json = {
                     -->作為分隔夢境與現實的介面，觀眾成為夢境的參與者，以實體的肉身來體驗趨向虛擬的夢境空間，以達到超越傳統敘事影像的敘夢。
                 `,
                 media: "視場地而定, 2023",
-                size: "", record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 6,
@@ -308,22 +459,19 @@ const information_json = {
                     -->也期許觀眾站在我們這個後知後覺的產物-即作品本身之後-能夠帶著各自的延伸與啟發回到各自的日常中，或許能在生命中激起某些漣漪與迴盪。
                 `,
                 media: "",
-                size: "", record: {
-                    images: [6, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 7,
                 members: [
                     {
-                        id: 39,
-                        title: "",
+                        id: 16,
+                        title: "組員A",
                     },
                     {
-                        id: 16,
-                        title: "",
-                    }
+                        id: 39,
+                        title: "組員B",
+                    },
                 ],
                 title: "燈火闌珊處",
                 format: "影像裝置",
@@ -336,10 +484,7 @@ const information_json = {
                     -->光線灑下，或和緩或劇烈的映入眼簾，感知的步伐總是後知後覺 ——— 原來，已是燈火闌珊。
                 `,
                 media: "雙頻道錄像、燈泡、光敏電阻、聚光燈、壓克力、鋁擠型",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 8,
@@ -370,10 +515,7 @@ const information_json = {
                     -->但想要如何用文字、語言來稱呼這件作品，完全取決於觀者，是自由憑人想像的。
                 `,
                 media: "",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 9,
@@ -395,10 +537,6 @@ const information_json = {
                 `,
                 media: "電視、混音器、蜂鳴片、音響、紙本、鋼筆、紗幕、檯燈、傢俱",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             },
             {
                 id: 10,
@@ -424,10 +562,6 @@ const information_json = {
                 `,
                 media: "自製遙控裝置",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             },
             {
                 id: 11,
@@ -447,10 +581,7 @@ const information_json = {
                     -->最後留下，蛻化過後的空殼，自己的痕跡
                 `,
                 media: "",
-                size: "", record: {
-                    images: [3, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 12,
@@ -471,10 +602,6 @@ const information_json = {
                 -->`,
                 media: "雙頻道錄像/彩色/有聲",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             }
         ],
         admins: [
@@ -711,6 +838,16 @@ const information_json = {
                         title: "組員",
                     }
                 ]
+            },
+            {
+                id: 11,
+                department: "發想組",
+                members: [
+                    {
+                        id: 39,
+                        title: "組長",
+                    },
+                ]
             }
         ]
     },
@@ -723,7 +860,7 @@ const information_json = {
             5: {name: "Wu Dai Wei"},
             6: {name: "Chiang Jia Hsuan"},
             7: {name: "Guo Zhe Yu"},
-            8: {name: "Tsai Shang-Teng"},
+            8: {name: "Teng"},
             10: {name: "Weng Kuo Kai"},
             14: {name: "Lee Jia"},
             15: {name: "Yu Tsung Lin"},
@@ -787,31 +924,25 @@ const information_json = {
                 `,
                 media: "Glass, Electronic Materials, Color Sound, 18'00\", Color/Sound",
                 size: "200cm x 200cm x 200cm",
-                record: {
-                    images: [2, 0],
-                    videos: {
-                        youtube: "91JGyan6MY8"
-                    },
-                }
             },
             {
                 id: 1,
                 members: [
                     {
                         id: 40,
-                        title: "",
+                        title: "Team Leader",
                     },
                     {
                         id: 31,
-                        title: "",
+                        title: "Programming Design",
                     },
                     {
                         id: 42,
-                        title: "",
+                        title: "Art Design",
                     },
                     {
                         id: 2,
-                        title: "",
+                        title: "Art Design",
                     },
                     {
                         id: 17,
@@ -819,10 +950,10 @@ const information_json = {
                     },
                     {
                         id: 8,
-                        title: "",
+                        title: "Visual Design",
                     }
                 ],
-                title: "Phantom of the Exhibition",
+                title: "The Wild Sight",
                 format: "",
                 description: `
                     "Phantom of the Exhibition" interacts with the entire exhibition space,
@@ -836,10 +967,7 @@ const information_json = {
                      and this series of works attempts to encourage viewers to rethink the implications of "audience to audience".
                 `,
                 media: "Video Interactive Installation",
-                size: "", record: {
-                    images: [5, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 2,
@@ -875,10 +1003,7 @@ const information_json = {
                     while inviting discussions on questioning and reflecting upon this state.
                 `,
                 media: "",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 3,
@@ -937,10 +1062,7 @@ const information_json = {
                     This aims to stimulate players to contemplate or define what constitutes "subjective reality."
                 `,
                 media: "",
-                size: "", record: {
-                    images: [5, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 4,
@@ -951,7 +1073,7 @@ const information_json = {
                     },
                     {
                         id: 29,
-                        title: "",
+                        title: "3D Model Designer, Installation Designer",
                     },
                     {
                         id: 58,
@@ -965,17 +1087,14 @@ const information_json = {
                     This work explores such technology, initially capturing the human body through physical recordings, then reconstructing the images through computer recognition, and finally reshaping the body's movements a second time. It creates a digital puppet, transitioning from the physical realm to the virtual one, deconstructed and reassembled by the computer. By incorporating narratives and dialogues with the puppet, the piece highlights the inherent differences between computers and humans in understanding "physicality, appearance, and corporeality." Can computers replace the unique attributes and emotional empathy possessed solely by humans? How do humans navigate their daily lives alongside digital technology as the line between reality and the virtual world becomes increasingly blurred?
                 `,
                 media: "Color/Sound",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 5,
                 members: [
                     {
                         id: 27,
-                        title: "",
+                        title: "Redundant Personnel",
                     },
                     {
                         id: 25,
@@ -987,7 +1106,7 @@ const information_json = {
                     },
                     {
                         id: 6,
-                        title: "",
+                        title: "Redundant Personnel",
                     },
                 ],
                 title: "Monema",
@@ -998,10 +1117,7 @@ const information_json = {
                     In this work, a quasi-theatrical video installation is presented. The audience must control their movement along a track while watching a dream-like, otherworldly space. They can view the dream from start to finish in one direction or return to the starting point, reflecting the fluid logic of dreams. The sense of spatial rupture between the artwork and the exhibition space acts as an interface separating dreams from reality. The audience becomes a participant in the dream, experiencing the virtual dream space through their physical presence, transcending traditional narrative imagery in dream narration.
                 `,
                 media: "Designated by the exhibition space",
-                size: "", record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 6,
@@ -1033,10 +1149,7 @@ const information_json = {
                     perhaps igniting ripples and reverberations in their existence.
                 `,
                 media: "",
-                size: "", record: {
-                    images: [6, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 7,
@@ -1050,7 +1163,7 @@ const information_json = {
                         title: "",
                     }
                 ],
-                title: "燈火闌珊處",
+                title: "In The Dim Light Of Night",
                 format: "Video Installation",
                 description: `
                     In daily life, the applications of sensors are innumerable, with photo-resistors being widely used for sensing light.
@@ -1065,10 +1178,7 @@ const information_json = {
                     in the end, that it is already at the dimly lit place.
                 `,
                 media: "Duo-channel video, light bulb, photo-resistor, spotlight, acrylic, aluminum extrusion",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 8,
@@ -1086,10 +1196,7 @@ const information_json = {
                     After the body perishes, where will the soul ultimately return?
                 `,
                 media: "",
-                size: "", record: {
-                    images: [4, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 9,
@@ -1107,10 +1214,6 @@ const information_json = {
                 `,
                 media: "Television, Mixer, Speaker, Sound System, Paper, Pen, Curtain, Table Lamp, Furniture",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             },
             {
                 id: 10,
@@ -1129,10 +1232,6 @@ const information_json = {
                 `,
                 media: "Self-made Remote Control Device",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             },
             {
                 id: 11,
@@ -1148,10 +1247,7 @@ const information_json = {
                     Amidst this age of information inundation, discovering our authentic inner voice proves daunting. We might feel alienated in this world, preoccupied with our looks or character. Endeavor to uncover your true essence, acknowledging the neglected aspects, the muted voices, and the overlooked hues. Ultimately, what lingers are the vestiges of our being, the hollow remnants after metamorphosis.
                 `,
                 media: "",
-                size: "", record: {
-                    images: [3, 0],
-                    videos: [0, 1]
-                }
+                size: "",
             },
             {
                 id: 12,
@@ -1169,10 +1265,6 @@ const information_json = {
                 `,
                 media: "Duo-channel video/Color/With Sound",
                 size: "",
-                record: {
-                    images: [0, 0],
-                    videos: [0, 1]
-                }
             }
         ],
         admins: [
@@ -1409,10 +1501,56 @@ const information_json = {
                         title: "組員",
                     }
                 ]
+            },
+            {
+                id: 11,
+                department: "發想組",
+                members: [
+                    {
+                        id: 39,
+                        title: "組長",
+                    },
+                ]
             }
         ]
     }
 }
+
+const zh_personal = information_json.zh.personal_info;
+const en_personal = information_json.en.personal_info;
+const zh_art_teams = information_json.zh.art_teams;
+const en_art_teams = information_json.en.art_teams;
+Object.entries(en_personal).forEach(([key, value]) => {
+    for (let keyword of ['external_links', 'comment_board']) {
+        if (global_info.personal_info[key][keyword]) {
+            zh_personal[key][keyword] = global_info.personal_info[key][keyword];
+        }
+    }
+})
+Object.entries(en_personal).forEach(([key, value]) => {
+    for (let keyword of ['external_links', 'comment_board']) {
+        if (global_info.personal_info[key][keyword]) {
+            en_personal[key][keyword] = global_info.personal_info[key][keyword];
+        }
+    }
+})
+
+Object.entries(zh_art_teams).forEach(([key, value]) => {
+    for (let keyword of ['record']) {
+        if (global_info.art_teams[key][keyword]) {
+            zh_art_teams[key][keyword] = global_info.art_teams[key][keyword];
+        }
+    }
+});
+
+Object.entries(en_art_teams).forEach(([key, value]) => {
+    for (let keyword of ['record']) {
+        if (global_info.art_teams[key][keyword]) {
+            en_art_teams[key][keyword] = global_info.art_teams[key][keyword];
+        }
+    }
+});
+
 export const information = readable(information_json);
 // implementation goes here
 
