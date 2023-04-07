@@ -25,8 +25,8 @@
         const video = document.querySelector('video');
         if (do_animate) {
             video.addEventListener('click', () => {
-                document.querySelector('#play-btn').classList.add('opacity-0');
-                document.querySelector('#play-btn').classList.add('hidden');
+                // document.querySelector('#play-btn').classList.add('opacity-0');
+                // document.querySelector('#play-btn').classList.add('hidden');
                 play_video();
             });
 
@@ -45,8 +45,8 @@
                on:click={play_video} controls="false" style="background-image: url('/images/website/logo/logo200.gif')">
             <source src="{vid_link}" type="video/mp4">
         </video>
-        <a id="play-btn" class="fa-solid fa-play absolute text-white/50 text-8xl transition-all duration-1000"
-           on:click={play_video}></a>
+        <!--        <a id="play-btn" class="fa-solid fa-play absolute text-white/50 text-8xl transition-all duration-1000"-->
+        <!--           on:click={play_video}></a>-->
     </div>
 {:else}
     <img src="{img_link}" alt=""

@@ -10,7 +10,7 @@ const global_info = {
         6: {},
         7: {},
         8: {
-            comment_board: `這個系所超爛，根本是藝術生產的垃圾場。<br>{youtube_link}`,
+            comment_board: `這個系所超爛，根本是藝術生產的垃圾場。`,
             external_links: {
                 youtube: 'https://www.youtube.com/@teng2688/videos'
             },
@@ -25,8 +25,26 @@ const global_info = {
         18: {},
         19: {},
         20: {},
-        21: {},
-        22: {},
+        21: {
+            external_links: {
+                github: 'https://github.com/2enter-studio',
+                facebook: 'https://www.facebook.com/2enter.tw/',
+                instagram: 'https://www.instagram.com/2enter.tw/',
+                youtube: 'https://www.youtube.com/channel/UCPSGvMqkM0eAeAoe-7sU8Wg',
+                nft: 'https://akaswap.com/tz/tz1feSswgqJc1YiCdvqaBRZyqcuW8E3Kz6Re',
+                email: 'mailto: mail@2enter.art'
+            }
+        },
+        22: {
+            external_links: {
+                github: 'https://github.com/2enter-studio',
+                facebook: 'https://www.facebook.com/2enter.tw/',
+                instagram: 'https://www.instagram.com/2enter.tw/',
+                youtube: 'https://www.youtube.com/channel/UCPSGvMqkM0eAeAoe-7sU8Wg',
+                nft: 'https://akaswap.com/tz/tz1feSswgqJc1YiCdvqaBRZyqcuW8E3Kz6Re',
+                email: 'mailto: mail@2enter.art'
+            }
+        },
         23: {},
         25: {},
         26: {},
@@ -34,7 +52,6 @@ const global_info = {
             comment_board: `蛙🐸太酷了8⃣️`
         },
         29: {
-            comment_board: `{ig_link}`,
             external_links: {
                 instagram: "https://www.instagram.com/kolyn._.j/",
             },
@@ -42,19 +59,35 @@ const global_info = {
         30: {},
         31: {
             comment_board: `大家好，我是浩瀚是這次後之後覺後展覽的總召，希望各位喜歡這次的展覽~<br><br>
-                {facebook_link}<br><br>
-                {ig_link}<br><br>
                 偷偷置入社團廣告XD~<br><br>
-                歡迎北藝大的同學加入或是關注 妖山桌遊社(https://www.facebook.com/tnuaboardgame)
+                歡迎北藝大的同學加入或是關注妖山桌遊社 ( https://www.facebook.com/tnuaboardgame )
             `,
             external_links: {
                 facebook: "https://www.facebook.com/profile.php?id=100007032133407",
                 instagram: "https://www.instagram.com/cgco_haohan_x.x_/",
             }
         },
-        32: {},
+        32: {
+            external_links: {
+                github: 'https://github.com/2enter-studio',
+                facebook: 'https://www.facebook.com/2enter.tw/',
+                instagram: 'https://www.instagram.com/2enter.tw/',
+                youtube: 'https://www.youtube.com/channel/UCPSGvMqkM0eAeAoe-7sU8Wg',
+                nft: 'https://akaswap.com/tz/tz1feSswgqJc1YiCdvqaBRZyqcuW8E3Kz6Re',
+                email: 'mailto: mail@2enter.art'
+            }
+        },
         33: {},
-        34: {},
+        34: {
+            external_links: {
+                github: 'https://github.com/2enter-studio',
+                facebook: 'https://www.facebook.com/2enter.tw/',
+                instagram: 'https://www.instagram.com/2enter.tw/',
+                youtube: 'https://www.youtube.com/channel/UCPSGvMqkM0eAeAoe-7sU8Wg',
+                nft: 'https://akaswap.com/tz/tz1feSswgqJc1YiCdvqaBRZyqcuW8E3Kz6Re',
+                email: 'mailto: mail@2enter.art'
+            }
+        },
         35: {},
         36: {},
         37: {},
@@ -65,7 +98,6 @@ const global_info = {
             `
         },
         40: {
-            comment_board: `{ig_link}`,
             external_links: {
                 instagram: "https://www.instagram.com/afeiien/?igshid=YmMyMTA2M2Y%3D&fbclid=IwAR0i4sTLFWY2lu6x8G9PWeNF-it_nJog8hGcK8e1J2qrZUKQOoj7UrwWmFc",
             }
@@ -854,17 +886,17 @@ const information_json = {
     en: {
         personal_info: {
             1: {name: "Pi Wei Tian"},
-            2: {name: "Poo Xin Yu"},
+            2: {name: "Pu Hsin Yu"},
             3: {name: "Hsueh Ruei-Jhih"},
             4: {name: "Grace Chu"},
             5: {name: "Wu Dai Wei"},
-            6: {name: "Chiang Jia Hsuan"},
+            6: {name: "Chang Chia Hsuan"},
             7: {name: "Guo Zhe Yu"},
             8: {name: "Teng"},
             10: {name: "Weng Kuo Kai"},
             14: {name: "Lee Jia"},
             15: {name: "Yu Tsung Lin"},
-            16: {name: "Tsai Cheng-Hao"},
+            16: {name: "Tsai Cheng Hao"},
             17: {name: "Tang Yu Xiang"},
             18: {name: "Peng Wen Yu"},
             19: {name: "Liao Wan Ling"},
@@ -875,7 +907,7 @@ const information_json = {
             25: {name: "Chien Yen Sheng"},
             26: {name: "Lin Tsung Hao"},
             27: {name: "Chen Chih Yang"},
-            29: {name: "Jian Yu Cheng"},
+            29: {name: "Kolyn Yo"},
             30: {name: "Lin Hui Ru"},
             31: {name: "Hsu Hao Han"},
             32: {name: "Chiu Chieh Yi"},
@@ -886,8 +918,8 @@ const information_json = {
             37: {name: "Lee Shih Peng"},
             38: {name: "Wang Chia Yu"},
             39: {name: "Ding Chang En"},
-            40: {name: "Wang Hui En"},
-            42: {name: "Chiu Yi Hsuan"},
+            40: {name: "Wong Fei En"},
+            42: {name: "Zhu Yi Xuan"},
             58: {name: "Tzu Nai Yu"},
             59: {name: "Lin Jia Yi"},
             60: {name: "Chou Shih Han"},
