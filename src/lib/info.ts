@@ -148,7 +148,7 @@ const global_info = {
         {
             id: 5,
             record: {
-                images: [0, 0],
+                images: [7, 0],
                 videos: {}
             }
         },
