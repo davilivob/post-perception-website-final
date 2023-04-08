@@ -210,9 +210,10 @@
             <div class="w-full h-[80vh] bg-no-repeat bg-cover bg-center rounded-tl-xl rounded-tr-xl rounded-br-xl"
                    style="background-image:url('/images/exhibition/artwork_photos/{artwork_info.id}/{image_num}.jpg'), url('/images/website/logo/logo200.gif');">
 
-                <div class="top-0 sm:text-lg text-s text-left break-after-avoid md:w-1/3 h-full text-transparent transition-all duration-500 ease-in-out rounded-tl-xl rounded-tr-xl rounded-br-xl md:rounded-br-none md:rounded-tr-none"
+                <div class="bg-black/30 top-0 sm:text-lg text-s text-cyan-50/80 text-left break-after-avoid
+                    md:w-1/3 h-full duration-500 rounded-t-xl rounded-br-xl md:rounded-r-none backdrop-blur-xl"
                     id="description-text-container">
-                    <p class="px-5 py-3 max-h-full h-full overflow-auto pointer-events-none sticky">
+                    <p class="px-5 py-3 max-h-full h-full overflow-auto sticky shadow-black shadow-2xl">
                         {is_en ? "Description": "作品論述"}：
                         <br><br>
                         {@html description}
@@ -221,7 +222,7 @@
                         bg-white/90 rounded-bl-xl rounded-br-xl p-1
                         cursor-pointer shadow-inner shadow-black ">
                         <a class="fa-solid fa-chevron-left hover:text-black transition-colors duration-200 p-2 px-3" on:click={last_img}></a>
-                        <a class="fa-regular fa-book hover:text-black transition-colors duration-200 p-2 px-3" on:click={toggle_description}></a>
+                        <a class="fa-regular fa-book-open hover:text-black transition-colors duration-200 p-2 px-3" on:click={toggle_description}></a>
                         <a class="fa-solid fa-chevron-right hover:text-black transition-colors duration-200 p-2 px-3" on:click={next_img}></a>
                     </div>
                 </div>
