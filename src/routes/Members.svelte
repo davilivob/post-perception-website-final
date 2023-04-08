@@ -128,7 +128,7 @@
     <div class="flex flex-row flex-wrap py-5 items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
         {#each pages as page}
             <div id="{page.name}-btn"
-                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer hover:text-white hover:bg-black"
+                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer text-white/70 hover:text-white hover:bg-black"
                  on:click={e => {
                     window.location.href = `/#/${params.language}/members/${page.id}`
                     if (current_page === page.name) return
