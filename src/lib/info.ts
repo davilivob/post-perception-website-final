@@ -21,10 +21,14 @@ const global_info = {
         16: {
             comment_board: `主修新媒體跨域，創作時常以機械動力、燈光與感測裝置為核心媒材，嘗試進行某種美學的藝術實踐。持續學習各式技能中！`
         },
-        17: {},
+        17: {
+            comment_board: `「今天早上我睡到自然醒，然後發現我根本不自然」<br><br>這是我們的世界，每個人都有權利發表自己的想法，但這不代表每個人都有責任發表有意義的東西。`
+        },
         18: {},
         19: {},
-        20: {},
+        20: {
+            comment_board: `ㅇ-<-<`
+        },
         21: {
             external_links: {
                 github: 'https://github.com/2enter-studio',
@@ -58,9 +62,12 @@ const global_info = {
         },
         30: {},
         31: {
-            comment_board: `大家好，我是浩瀚是這次後之後覺後展覽的總召，希望各位喜歡這次的展覽~<br><br>
+            comment_board: `
+                <div>大家好，我是浩瀚是這次後之後覺後展覽的總召，希望各位喜歡這次的展覽~<br><br>
                 偷偷置入社團廣告XD~<br><br>
-                歡迎北藝大的同學加入或是關注妖山桌遊社 ( https://www.facebook.com/tnuaboardgame )
+                歡迎北藝大的同學加入或是關注妖山桌遊社 (
+                <a href="https://www.facebook.com/tnuaboardgame" target="_blank" style="display: inline; color: orange;">https://www.facebook.com/tnuaboardgame</a>
+                )</div>
             `,
             external_links: {
                 facebook: "https://www.facebook.com/profile.php?id=100007032133407",
@@ -103,7 +110,12 @@ const global_info = {
             }
         },
         42: {},
-        58: {},
+        58: {
+            comment_board: `🐌🧼 摸哪？？`,
+            external_links: {
+                instagram: 'https://www.instagram.com/mona.coke_/',
+            }
+        },
         59: {},
         60: {},
     },
@@ -176,7 +188,7 @@ const global_info = {
         {
             id: 9,
             record: {
-                images: [0, 0],
+                images: [5, 0],
                 videos: {}
             }
         },
@@ -301,7 +313,7 @@ const information_json = {
                     },
                     {
                         id: 17,
-                        title: "",
+                        title: "裝置設計",
                     },
                     {
                         id: 8,
@@ -416,10 +428,10 @@ const information_json = {
                     },
                     {
                         id: 58,
-                        title: "",
+                        title: "聲音設計",
                     }
                 ],
-                title: "BizarreParadoxcallyMargin",
+                title: "BizarreParadoxicallyMargin",
                 format: "單頻道錄像",
                 description: `
                     當今動畫技術中常以完全自動化的動態捕捉（motion capture）、後加人為逐幀編輯關鍵幀（keyframe）製成實體轉為虛擬的數位影像。<!--
@@ -444,7 +456,7 @@ const information_json = {
                     },
                     {
                         id: 20,
-                        title: "",
+                        title: "冗員2號",
                     },
                     {
                         id: 6,
@@ -901,10 +913,10 @@ const information_json = {
             14: {name: "Lee Jia"},
             15: {name: "Yu Tsung Lin"},
             16: {name: "Tsai Cheng Hao"},
-            17: {name: "Tang Yu Xiang"},
+            17: {name: "Tang Yu Hsiang"},
             18: {name: "Peng Wen Yu"},
             19: {name: "Liao Wan Ling"},
-            20: {name: "Chiang Kai Hsi"},
+            20: {name: "no0z0omi"},
             21: {name: "Chuang En Chieh"},
             22: {name: "Chen Cheng Wei"},
             23: {name: "Wu Pei Chun"},
@@ -924,7 +936,7 @@ const information_json = {
             39: {name: "Ding Chang En"},
             40: {name: "Wong Fei En"},
             42: {name: "Zhu Yi Xuan"},
-            58: {name: "Tzu Nai Yu"},
+            58: {name: "Mona Su"},
             59: {name: "Lin Jia Yi"},
             60: {name: "Chou Shih Han"},
         },
@@ -982,7 +994,7 @@ const information_json = {
                     },
                     {
                         id: 17,
-                        title: "",
+                        title: "Installation Design",
                     },
                     {
                         id: 8,
@@ -1113,10 +1125,10 @@ const information_json = {
                     },
                     {
                         id: 58,
-                        title: "",
+                        title: "Sound Design",
                     }
                 ],
-                title: "BizarreParadoxcallyMargin",
+                title: "BizarreParadoxicallyMargin",
                 format: "單頻道錄像",
                 description: `
                     In today's world, the transformation of bodily movements into virtual models often employs fully automated "posture recognition" techniques to generate images. During this process, computers utilize algorithms and calculations to construct visuals, resulting in an inability to perfectly capture the real-world dynamics of the human body.<br><br>
@@ -1138,7 +1150,7 @@ const information_json = {
                     },
                     {
                         id: 20,
-                        title: "",
+                        title: "Redundant Personnel",
                     },
                     {
                         id: 6,
