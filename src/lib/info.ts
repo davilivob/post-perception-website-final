@@ -1,4 +1,4 @@
-import {readable} from "svelte/store";
+import { readable } from "svelte/store";
 
 const global_info = {
     personal_info: {
@@ -228,44 +228,44 @@ const global_info = {
 const information_json = {
     zh: {
         personal_info: {
-            1: {name: "白維田"},
-            2: {name: "蒲欣妤"},
-            3: {name: "許睿智"},
-            4: {name: "朱紹筠"},
-            5: {name: "吳黛葳"},
-            6: {name: "張珈瑄"},
-            7: {name: "高哲淯"},
-            8: {name: "蔡尚騰"},
-            10: {name: "翁國愷"},
-            14: {name: "李頡"},
-            15: {name: "余宗霖"},
-            16: {name: "蔡政澔"},
-            17: {name: "唐昱翔"},
-            18: {name: "潘玟瑜"},
-            19: {name: "廖婉淩"},
-            20: {name: "江愷希"},
-            21: {name: "莊恩齊"},
-            22: {name: "陳政維"},
-            23: {name: "吳佩純"},
-            25: {name: "陳妍姍"},
-            26: {name: "林琮澔"},
-            27: {name: "陳誌陽"},
-            29: {name: "簡祐呈"},
-            30: {name: "林慧儒"},
-            31: {name: "徐浩瀚"},
-            32: {name: "邱傑義"},
-            33: {name: "韓承芯"},
-            34: {name: "劉吉榮"},
-            35: {name: "楊茗柯"},
-            36: {name: "胡品孜"},
-            37: {name: "李士朋"},
-            38: {name: "王嘉郁"},
-            39: {name: "丁常恩"},
-            40: {name: "王暉蒽"},
-            42: {name: "朱亦萱"},
-            58: {name: "蘇乃俞"},
-            59: {name: "林珈誼"},
-            60: {name: "周詩涵"},
+            1: { name: "白維田" },
+            2: { name: "蒲欣妤" },
+            3: { name: "許睿智" },
+            4: { name: "朱紹筠" },
+            5: { name: "吳黛葳" },
+            6: { name: "張珈瑄" },
+            7: { name: "高哲淯" },
+            8: { name: "蔡尚騰" },
+            10: { name: "翁國愷" },
+            14: { name: "李頡" },
+            15: { name: "余宗霖" },
+            16: { name: "蔡政澔" },
+            17: { name: "唐昱翔" },
+            18: { name: "潘玟瑜" },
+            19: { name: "廖婉淩" },
+            20: { name: "江愷希" },
+            21: { name: "莊恩齊" },
+            22: { name: "陳政維" },
+            23: { name: "吳佩純" },
+            25: { name: "陳妍姍" },
+            26: { name: "林琮澔" },
+            27: { name: "陳誌陽" },
+            29: { name: "簡祐呈" },
+            30: { name: "林慧儒" },
+            31: { name: "徐浩瀚" },
+            32: { name: "邱傑義" },
+            33: { name: "韓承芯" },
+            34: { name: "劉吉榮" },
+            35: { name: "楊茗柯" },
+            36: { name: "胡品孜" },
+            37: { name: "李士朋" },
+            38: { name: "王嘉郁" },
+            39: { name: "丁常恩" },
+            40: { name: "王暉蒽" },
+            42: { name: "朱亦萱" },
+            58: { name: "蘇乃俞" },
+            59: { name: "林珈誼" },
+            60: { name: "周詩涵" },
         },
         art_teams: [
             {
@@ -907,44 +907,44 @@ const information_json = {
     },
     en: {
         personal_info: {
-            1: {name: "Pi Wei Tian"},
-            2: {name: "Pu Hsin Yu"},
-            3: {name: "Hsueh Ruei-Jhih"},
-            4: {name: "Grace Chu"},
-            5: {name: "Wu Dai Wei"},
-            6: {name: "Chang Chia Hsuan"},
-            7: {name: "Guo Zhe Yu"},
-            8: {name: "Teng"},
-            10: {name: "Weng Kuo Kai"},
-            14: {name: "Lee Jia"},
-            15: {name: "Yu Zong Lin"},
-            16: {name: "Tsai Cheng Hao"},
-            17: {name: "Tang Yu Hsiang"},
-            18: {name: "Peng Wen Yu"},
-            19: {name: "Liao Wan Ling"},
-            20: {name: "no0z0omi"},
-            21: {name: "Chuang En Chieh"},
-            22: {name: "Chen Cheng Wei"},
-            23: {name: "Wu Pei Chun"},
-            25: {name: "Chien Yen Sheng"},
-            26: {name: "Lin Tsung Hao"},
-            27: {name: "Chen Chih Yang"},
-            29: {name: "Kolyn Yo"},
-            30: {name: "Lin Hui Ru"},
-            31: {name: "Hsu Hao Han"},
-            32: {name: "Chiu Chieh Yi"},
-            33: {name: "Han Cheng Hsin"},
-            34: {name: "Liou Ji Rong"},
-            35: {name: "Yang Ming Ke"},
-            36: {name: "Hu Pin Zi"},
-            37: {name: "Lee Shih Peng"},
-            38: {name: "Wang Chia Yu"},
-            39: {name: "Ding Chang En"},
-            40: {name: "Wong Fei En"},
-            42: {name: "Zhu Yi Xuan"},
-            58: {name: "Mona Su"},
-            59: {name: "Lin Jia Yi"},
-            60: {name: "Chou Shih Han"},
+            1: { name: "Pi Wei Tian" },
+            2: { name: "Pu Hsin Yu" },
+            3: { name: "Hsueh Ruei-Jhih" },
+            4: { name: "Grace Chu" },
+            5: { name: "Wu Dai Wei" },
+            6: { name: "Chang Chia Hsuan" },
+            7: { name: "Guo Zhe Yu" },
+            8: { name: "Teng" },
+            10: { name: "Weng Kuo Kai" },
+            14: { name: "Lee Jia" },
+            15: { name: "Yu Zong Lin" },
+            16: { name: "Tsai Cheng Hao" },
+            17: { name: "Tang Yu Hsiang" },
+            18: { name: "Peng Wen Yu" },
+            19: { name: "Liao Wan Ling" },
+            20: { name: "no0z0omi" },
+            21: { name: "Chuang En Chieh" },
+            22: { name: "Chen Cheng Wei" },
+            23: { name: "Wu Pei Chun" },
+            25: { name: "Chien Yen Sheng" },
+            26: { name: "Lin Tsung Hao" },
+            27: { name: "Chen Chih Yang" },
+            29: { name: "Kolyn Yo" },
+            30: { name: "Lin Hui Ru" },
+            31: { name: "Hsu Hao Han" },
+            32: { name: "Chiu Chieh Yi" },
+            33: { name: "Han Cheng Hsin" },
+            34: { name: "Liou Ji Rong" },
+            35: { name: "Yang Ming Ke" },
+            36: { name: "Hu Pin Zi" },
+            37: { name: "Lee Shih Peng" },
+            38: { name: "Wang Chia Yu" },
+            39: { name: "Ding Chang En" },
+            40: { name: "Wong Fei En" },
+            42: { name: "Zhu Yi Xuan" },
+            58: { name: "Mona Su" },
+            59: { name: "Lin Jia Yi" },
+            60: { name: "Chou Shih Han" },
         },
         art_teams: [
             {
@@ -1209,12 +1209,12 @@ const information_json = {
                 id: 7,
                 members: [
                     {
-                        id: 39,
-                        title: "",
+                        id: 16,
+                        title: "Team Member A",
                     },
                     {
-                        id: 16,
-                        title: "",
+                        id: 39,
+                        title: "Team Member B",
                     },
                 ],
                 title: "In The Dim Light Of Night",
@@ -1580,14 +1580,14 @@ const zh_personal = information_json.zh.personal_info;
 const en_personal = information_json.en.personal_info;
 const zh_art_teams = information_json.zh.art_teams;
 const en_art_teams = information_json.en.art_teams;
-Object.entries(en_personal).forEach(([key, value]) => {
+Object.entries(en_personal).forEach(([key]) => {
     for (const keyword of ["external_links", "comment_board"]) {
         if (global_info.personal_info[key][keyword]) {
             zh_personal[key][keyword] = global_info.personal_info[key][keyword];
         }
     }
 });
-Object.entries(en_personal).forEach(([key, value]) => {
+Object.entries(en_personal).forEach(([key]) => {
     for (const keyword of ["external_links", "comment_board"]) {
         if (global_info.personal_info[key][keyword]) {
             en_personal[key][keyword] = global_info.personal_info[key][keyword];
@@ -1595,7 +1595,7 @@ Object.entries(en_personal).forEach(([key, value]) => {
     }
 });
 
-Object.entries(zh_art_teams).forEach(([key, value]) => {
+Object.entries(zh_art_teams).forEach(([key]) => {
     for (const keyword of ["record"]) {
         if (global_info.art_teams[key][keyword]) {
             zh_art_teams[key][keyword] = global_info.art_teams[key][keyword];
@@ -1603,7 +1603,7 @@ Object.entries(zh_art_teams).forEach(([key, value]) => {
     }
 });
 
-Object.entries(en_art_teams).forEach(([key, value]) => {
+Object.entries(en_art_teams).forEach(([key]) => {
     for (const keyword of ["record"]) {
         if (global_info.art_teams[key][keyword]) {
             en_art_teams[key][keyword] = global_info.art_teams[key][keyword];
