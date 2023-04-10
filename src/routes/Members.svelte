@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {information} from "../lib/info";
+    import { information } from "../lib/info";
     import FacePic from "../Components/FacePic.svelte";
-    import {onMount} from "svelte";
+    import { onMount } from "svelte";
 
     interface route_body {
         language?: string;
@@ -11,9 +11,9 @@
     export let params: route_body = {};
 
     const is_en: boolean = params.language == "en";
-    const all_info: object = $information[params.language];
+    const all_info = $information[params.language];
     const members_info: object = all_info.admins;
-    let members: Array<Object> = [];
+    let members = [];
     for (const [key, value] of Object.entries(all_info.personal_info)) {
         members.push({
             name: value.name,
@@ -74,7 +74,7 @@
             id: 5,
             name: "public",
             color: "rose",
-            content: is_en ? "Business" : "公關組",
+            content: is_en ? "Public Relation" : "公關組",
             icon: "fa-handshake",
         },
         {
@@ -157,9 +157,7 @@
     onMount(() => {
         const page_name: String = pages[page_id].name;
         const page_color: String = pages[page_id].color;
-        const page_btn: HTMLElement = document.getElementById(
-            `${page_name}-btn`
-        );
+        const page_btn: HTMLElement = document.getElementById(`${page_name}-btn`);
         light_btn(page_btn);
     });
 </script>
@@ -169,14 +167,12 @@
         {is_en ? "MEMBERS" : "參展人員"}
     </h1>
 
-    <div
-            class="flex flex-row flex-wrap py-5 items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3"
-    >
+    <div class="flex flex-row flex-wrap py-5 items-center justify-center gap-3 px-2 py-1 md:w-1/2 lg:w-1/3">
         {#each pages as page}
             <div
-                    id="{page.name}-btn"
-                    class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer text-white/70 hover:text-white hover:bg-black"
-                    on:click={(e) => {
+                id="{page.name}-btn"
+                class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer text-white/70 hover:text-white hover:bg-black"
+                on:click={(e) => {
                     window.location.href = `/#/${params.language}/members/${page.id}`;
                     if (current_page === page.name) return;
                     current_page = page.name;
@@ -185,43 +181,28 @@
                     for (let i = 0; i < pages.length; i++) {
                         if (pages[i].name !== page.name) {
                             hide_page(pages[i].name);
-                            dark_btn(
-                                document.getElementById(`${pages[i].name}-btn`)
-                            );
+                            dark_btn(document.getElementById(`${pages[i].name}-btn`));
                         } else {
                             show_page(pages[i].name);
                         }
                     }
                 }}
             >
-                <a class="fa-regular {page.icon} pointer-events-none"/>
+                <a class="fa-regular {page.icon} pointer-events-none" />
                 {page.content}
             </div>
         {/each}
     </div>
 
-    <div
-            class="bg-none shadow-black/50 shadow-2xl rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit max-w-[80vw] lg:p-2"
-    >
+    <div class="bg-none shadow-black/50 shadow-2xl rounded-xl m-5 text-white/90 backdrop-blur-2xl w-fit max-w-[80vw] lg:p-2">
         {#each members_info as admin_team}
-            <div
-                    class="{page_id == admin_team.id
-                    ? ''
-                    : 'hidden'} p-10 text-center"
-                    id="{pages[admin_team.id].name}-page"
-            >
-                <div
-                        class="flex flex-row flex-wrap justify-evenly lg:gap-5 gap-2 border-b-1 border-white/20"
-                >
+            <div class="{page_id == admin_team.id ? '' : 'hidden'} p-10 text-center" id="{pages[admin_team.id].name}-page">
+                <div class="flex flex-row flex-wrap justify-evenly lg:gap-5 gap-2 border-b-1 border-white/20">
                     {#each admin_team.members as member}
                         <div class="flex flex-col gap-1 text-center">
-                            <FacePic id={member.id} lang={params.language}/>
-                            <a class="font-extrabold text-xl"
-                            >{all_info.personal_info[member.id].name}</a
-                            >
-                            <a class="font-normal mt-2 text-lg"
-                            >{member.title}</a
-                            >
+                            <FacePic id={member.id} lang={params.language} />
+                            <a class="font-extrabold text-xl">{all_info.personal_info[member.id].name}</a>
+                            <a class="font-normal mt-2 text-lg">{member.title}</a>
                         </div>
                     {/each}
                 </div>
