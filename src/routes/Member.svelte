@@ -132,7 +132,7 @@
             <i class="font-bold text-3xl text-white">{name}</i>
 
             <div
-                class="flex flex-row gap-3 text-2xl backdrop-blur-md p-2 rounded-xl"
+                class="flex flex-row gap-3 text-2xl backdrop-blur-md p-2 rounded-xl bg-black/20"
             >
                 {@html external_links_content}
             </div>
