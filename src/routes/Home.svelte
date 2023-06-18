@@ -1,16 +1,18 @@
 <script>
-    import {information} from '../lib/info';
+    import { information } from "../lib/info";
+    import { loadModel } from "../lib/LoadModel";
+    import { onMount } from "svelte";
     import * as THREE from "three";
     import * as TWEEN from "tween";
-    import {loadModel} from "../lib/LoadModel";
-    import {onMount} from "svelte";
+    const BASE_URL = import.meta.env.BASE_URL;
 
     export let params = {};
 
-    const is_en = params.language == 'en';
+    let grate_1, grate_2, grate_3, title_model;
+    let progress_bar, work_name_dom, exit_btn, info_dom, info_text;
+
     let all_info = $information[params.language];
     const artworks_info = all_info.art_teams;
-    $:current_work_info = artworks_info[params.work_id || 0].description;
 
     let clickStartX = 0;
     let clickEndX = 0;
@@ -22,14 +24,13 @@
     let boolChange2 = false;
     let boolAnimate = true;
 
-
     const raycaster = new THREE.Raycaster();
     let mouse = new THREE.Vector2();
 
-    let index = 0;  //作品名稱index
-    let mode = 0;  //切換有無點擊模型的模式
+    let index = 0; //作品名稱index
+    let mode = 0; //切換有無點擊模型的模式
 
-    let boolDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);  //判斷裝置類型
+    let is_mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); //判斷裝置類型
     //Set Scene
     const scene = new THREE.Scene();
 
@@ -40,29 +41,26 @@
     camera.lookAt(0, 0, 0);
     scene.add(camera);
 
-
     const items = [];
+
     const itemPath = [
-        '/home/static/gltf/Item1.gltf',
-        '/home/static/gltf/Item2.gltf',
-        '/home/static/gltf/Item3.gltf',
-        '/home/static/gltf/Item4.gltf',
-        '/home/static/gltf/Item5.gltf',
-        // './static/gltf/Item6.gltf',
-        '/home/static/gltf/Item7.gltf',
-        '/home/static/gltf/Item8.gltf',
-        '/home/static/gltf/Item9.gltf',
-        '/home/static/gltf/Item10.gltf',
-        '/home/static/gltf/Item11.gltf',
-        '/home/static/gltf/Item12.gltf',
-        '/home/static/gltf/Item13.gltf',
+        `${BASE_URL}/home/static/gltf/Item1.gltf`,
+        `${BASE_URL}/home/static/gltf/Item2.gltf`,
+        `${BASE_URL}/home/static/gltf/Item3.gltf`,
+        `${BASE_URL}/home/static/gltf/Item4.gltf`,
+        `${BASE_URL}/home/static/gltf/Item5.gltf`,
+        // `./static/gltf/Item6.gltf`,
+        `${BASE_URL}/home/static/gltf/Item7.gltf`,
+        `${BASE_URL}/home/static/gltf/Item8.gltf`,
+        `${BASE_URL}/home/static/gltf/Item9.gltf`,
+        `${BASE_URL}/home/static/gltf/Item10.gltf`,
+        `${BASE_URL}/home/static/gltf/Item11.gltf`,
+        `${BASE_URL}/home/static/gltf/Item12.gltf`,
+        `${BASE_URL}/home/static/gltf/Item13.gltf`,
     ];
 
     let loadedCount = 0;
     const totalCount = itemPath.length;
-
-
-    let grate, grate2, grate3, text;
 
     //Set Material
     const glassesMaterial = new THREE.MeshStandardMaterial({
@@ -91,61 +89,35 @@
     setLight();
 
     //Set Renderer
-    const renderer = new THREE.WebGLRenderer({antialias: false});
+    const renderer = new THREE.WebGLRenderer({ antialias: false });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x002266);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
     //Set WorksName
-    const worksName = [
-        'Frontier02',
-        '野 視',
-        '在高塔上做著白日夢',
-        '!Virtual',
-        'BizarreParadoxcallyMargin',
-        // '夢尼瑪Monema',
-        '空 _ 集合',
-        '燈火闌珊處',
-        '無題',
-        '◯',
-        '死 循 環',
-        'Finding',
-        'non-stop'
-    ];
+    const worksName = [];
+    const worksInformation = [];
 
-
-    const worksInformation = [
-        'Frontier02, abc',
-        '野 視, abc',
-        '在高塔上做著白日夢, abc',
-        '!Virtual, abc',
-        'BizarreParadoxcallyMargin, abc',
-        // '夢尼瑪Monema, abc',
-        '空 _ 集合, abc',
-        '燈火闌珊處, abc',
-        '無題, abc',
-        '◯, abc',
-        '死 循 環, abc',
-        'Finding, abc',
-        'non-stop, abc'
-    ];
-
+    for (const team of artworks_info) {
+        worksName.push(team.title);
+        worksInformation.push(team.description);
+    }
 
     //-----Device-----
-
     function onPCControl() {
-        text.position.set(-0.2, 0.5, -4);
-        text.scale.set(3.1, 3.1, 3.1);
-        name.style.top = "80%";
-        name.style.fontSize = "57px";
-        exit.style.width = "100px";
-        exit.style.height = "100px";
+        title_model.position.set(-0.2, 0.5, -4);
+        title_model.scale.set(3.1, 3.1, 3.1);
+        work_name_dom.style.top = "80%";
+        work_name_dom.style.fontSize = "57px";
+        exit_btn.style.width = "100px";
+        exit_btn.style.height = "100px";
 
         document.addEventListener("mousedown", (e) => {
             clickStartX = e.screenX;
-            name.classList.remove("animation");
+            work_name_dom.classList.remove("animation");
         });
+
         document.addEventListener("mouseup", (e) => {
             clickEndX = e.screenX;
             if (boolAnimate && mode === 0) {
@@ -160,22 +132,21 @@
                 }
             }
         });
-
     }
 
     function onMobileControl() {
-        text.position.set(-0.4, 1.1, -3.8);
-        text.scale.set(1.4, 1.4, 1.4);
-        name.style.top = "75%";
-        name.style.fontSize = "23px";
-        exit.style.width = "40px";
-        exit.style.height = "25px";
-        exit.style.top = "90%";
-        exit.style.left = "10%";
+        title_model.position.set(-0.4, 1.1, -3.8);
+        title_model.scale.set(1.4, 1.4, 1.4);
+        work_name_dom.style.top = "75%";
+        work_name_dom.style.fontSize = "23px";
+        exit_btn.style.width = "40px";
+        exit_btn.style.height = "25px";
+        exit_btn.style.top = "90%";
+        exit_btn.style.left = "10%";
 
         document.addEventListener("touchstart", (e) => {
             touchstartX = e.changedTouches[0].screenX;
-            name.classList.remove("animation");
+            work_name_dom.classList.remove("animation");
         });
 
         document.addEventListener("touchend", (e) => {
@@ -192,13 +163,10 @@
                     items.unshift(lastElement);
                 }
             }
-
         });
-
     }
 
     //-----Function-----
-
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -238,93 +206,71 @@
 
     function render() {
         renderer.render(scene, camera);
-        if (grate) {
-            grate.rotation.y += 0.00015;
-            grate3.rotation.y += 0.00003;
-            grate2.rotation.y += 0.00014;
+        if (grate_1) {
+            grate_1.rotation.y += 0.00015;
+            grate_3.rotation.y += 0.00003;
+            grate_2.rotation.y += 0.00014;
             if (mode === 0) {
                 if (items[0].rotation.y > 2 * Math.PI) {
-                    items[0].rotation.y = 0
+                    items[0].rotation.y = 0;
                 }
                 items[0].rotation.y += 0.013;
-                if (boolDevice) {
-                    new TWEEN.Tween(items[0].scale)
-                        .to({x: 2, y: 2, z: 2}, 1000)
-                        .start();
-
-                    new TWEEN.Tween(items[0].position)
-                        .to({x: 0, z: -2.5}, 1000)
-                        .start();
+                if (is_mobile) {
+                    new TWEEN.Tween(items[0].scale).to({ x: 2, y: 2, z: 2 }, 1000).start();
+                    new TWEEN.Tween(items[0].position).to({ x: 0, z: -2.5 }, 1000).start();
                 } else {
-                    new TWEEN.Tween(items[0].scale)
-                        .to({x: 2.5, y: 2.5, z: 2.5}, 1000)
-                        .start();
-
-                    new TWEEN.Tween(items[0].position)
-                        .to({x: 0, z: -2.5}, 1000)
-                        .start();
+                    new TWEEN.Tween(items[0].scale).to({ x: 2.5, y: 2.5, z: 2.5 }, 1000).start();
+                    new TWEEN.Tween(items[0].position).to({ x: 0, z: -2.5 }, 1000).start();
                 }
-                exit.style.opacity = "0";
-                exit.style.transform = "translateY(10000px)";
-                information_dom.style.opacity = "0";
-
+                exit_btn.style.opacity = "0";
+                exit_btn.style.transform = "translateY(10000px)";
+                info_dom.style.opacity = "0";
             } else if (mode === 1) {
-                if (boolDevice) {
-                    new TWEEN.Tween(items[0].scale)
-                        .to({x: 4.5, y: 4.5, z: 4.5}, 1000)
-                        .start();
+                if (is_mobile) {
+                    new TWEEN.Tween(items[0].scale).to({ x: 4.5, y: 4.5, z: 4.5 }, 1000).start();
+                    new TWEEN.Tween(items[0].position).to({ x: 0.55, z: -2.5 }, 1000).start();
 
-                    new TWEEN.Tween(items[0].position)
-                        .to({x: 0.55, z: -2.5}, 1000)
-                        .start();
+                    info_dom.style.width = "75%";
+                    info_dom.style.height = "60%";
+                    info_dom.style.borderRadius = "10px";
 
-                    information_dom.style.width = "75%"
-                    information_dom.style.height = "60%"
-                    information_dom.style.borderRadius = "10px";
-                    informationText.style.fontSize = "11px";
-                    informationText.style.padding = "8px";
-                    informationText.style.margin = "8px";
+                    info_text.style.fontSize = "11px";
+                    info_text.style.padding = "8px";
+                    info_text.style.margin = "8px";
                 } else {
-                    new TWEEN.Tween(items[0].scale)
-                        .to({x: 4, y: 4, z: 4}, 1000)
-                        .start();
+                    new TWEEN.Tween(items[0].scale).to({ x: 4, y: 4, z: 4 }, 1000).start();
 
-                    new TWEEN.Tween(items[0].position)
-                        .to({x: 0.6, z: -2.5}, 1000)
-                        .start();
+                    new TWEEN.Tween(items[0].position).to({ x: 0.6, z: -2.5 }, 1000).start();
 
-                    information_dom.style.width = "25%"
-                    information_dom.style.height = "50%"
-                    information_dom.style.borderRadius = "25px";
-                    information_dom.style.transform = "translate(-95%, -50%)";
-                    informationText.style.fontSize = "31px";
-                    informationText.style.padding = "20px";
-                    informationText.style.margin = "20px";
+                    info_dom.style.width = "25%";
+                    info_dom.style.height = "50%";
+                    info_dom.style.borderRadius = "25px";
+                    info_dom.style.transform = "translate(-95%, -50%)";
+
+                    info_text.style.fontSize = "21px";
+                    info_text.style.padding = "20px";
+                    info_text.style.margin = "20px";
                 }
-                new TWEEN.Tween(items[0].rotation)
-                    .to({y: 0}, 1000)
-                    .start();
-                name.classList.add("animation");
-                exit.style.opacity = "0.7";
-                exit.style.transform = "translateY(0px)";
-                name.style.opacity = "0";
-                information_dom.style.opacity = "0.7";
+                new TWEEN.Tween(items[0].rotation).to({ y: 0 }, 1000).start();
+                work_name_dom.classList.add("animation");
+                exit_btn.style.opacity = "0.7";
+                exit_btn.style.transform = "translateY(0px)";
+                work_name_dom.style.opacity = "0";
+                info_dom.style.opacity = "0.7";
             }
         }
     }
 
-    function setItemPosition(_boolDevice) {
+    function setItemPosition(_is_mobile) {
         items[0].position.set(0, 0, -2.5);
 
         for (let i = 1, j = 0.5, k = -8; i < items.length; i++, j += 2.5, k++) {
             items[i].position.set(j, -0.4, k);
         }
         for (const model of items) {
-            if (_boolDevice) {
-                model.scale.set(2, 2, 2);
-            } else {
-                model.scale.set(2.5, 2.5, 2.5);
-            }
+            const scale = _is_mobile ? 2 : 2.5;
+            model.scale.set(scale, scale, scale);
+
             model.material = glassesMaterial;
             scene.add(model);
         }
@@ -342,15 +288,15 @@
                 index = 0;
             }
 
-            name.style.opacity = "0";
-            name.style.transform = "translateY(-150px)";
+            work_name_dom.style.opacity = "0";
+            work_name_dom.style.transform = "translateY(-150px)";
             setTimeout(() => {
-                name.classList.add("animation");
-                name.style.opacity = "1";
-                name.style.transform = "translateY(0px)";
+                work_name_dom.classList.add("animation");
+                work_name_dom.style.opacity = "1";
+                work_name_dom.style.transform = "translateY(0px)";
             }, 2000);
 
-            let positionList = []
+            let positionList = [];
             for (const item of items) {
                 const positions = item.position;
                 positionList.push(positions);
@@ -359,11 +305,14 @@
             for (let i = 0; i < items.length; i++) {
                 if (i - 1 === -1) {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({
-                            x: positionList[items.length - 1].x,
-                            y: positionList[items.length - 1].y,
-                            z: positionList[items.length - 1].z
-                        }, 3000)
+                        .to(
+                            {
+                                x: positionList[items.length - 1].x,
+                                y: positionList[items.length - 1].y,
+                                z: positionList[items.length - 1].z,
+                            },
+                            3000
+                        )
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -371,7 +320,7 @@
                     tween.start();
                 } else {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z}, 3000)
+                        .to({ x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -389,15 +338,15 @@
                 index = worksName.length - 1;
             }
 
-            name.style.opacity = "0";
-            name.style.transform = "translateY(-150px)";
+            work_name_dom.style.opacity = "0";
+            work_name_dom.style.transform = "translateY(-150px)";
             setTimeout(() => {
-                name.classList.add("animation");
-                name.style.opacity = "1";
-                name.style.transform = "translateY(0px)";
+                work_name_dom.classList.add("animation");
+                work_name_dom.style.opacity = "1";
+                work_name_dom.style.transform = "translateY(0px)";
             }, 2000);
 
-            let positionList = []
+            let positionList = [];
             for (const item of items) {
                 const positions = item.position;
                 positionList.push(positions);
@@ -406,7 +355,7 @@
             for (let i = 0; i < items.length; i++) {
                 if (i + 1 === items.length) {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[0].x, y: positionList[0].y, z: positionList[0].z}, 3000)
+                        .to({ x: positionList[0].x, y: positionList[0].y, z: positionList[0].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -414,7 +363,7 @@
                     tween.start();
                 } else {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z}, 3000)
+                        .to({ x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -427,12 +376,11 @@
             boolChange2 = false;
             boolAnimate = true;
         }
-        name.innerHTML = worksName[index];
-        // informationText.innerHTML = worksInformation[index];
+        work_name_dom.innerHTML = worksName[index];
+        info_text.innerHTML = worksInformation[index];
     }
 
     function checkDirection() {
-
         boolAnimate = false;
 
         if (touchendX - touchstartX > 30) {
@@ -444,15 +392,15 @@
                 index = 0;
             }
 
-            name.style.opacity = "0";
-            name.style.transform = "translateY(-150px)";
+            work_name_dom.style.opacity = "0";
+            work_name_dom.style.transform = "translateY(-150px)";
             setTimeout(() => {
-                name.classList.add("animation");
-                name.style.opacity = "1";
-                name.style.transform = "translateY(0px)";
+                work_name_dom.classList.add("animation");
+                work_name_dom.style.opacity = "1";
+                work_name_dom.style.transform = "translateY(0px)";
             }, 2000);
 
-            let positionList = []
+            let positionList = [];
             for (const item of items) {
                 const positions = item.position;
                 positionList.push(positions);
@@ -461,11 +409,14 @@
             for (let i = 0; i < items.length; i++) {
                 if (i - 1 === -1) {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({
-                            x: positionList[items.length - 1].x,
-                            y: positionList[items.length - 1].y,
-                            z: positionList[items.length - 1].z
-                        }, 3000)
+                        .to(
+                            {
+                                x: positionList[items.length - 1].x,
+                                y: positionList[items.length - 1].y,
+                                z: positionList[items.length - 1].z,
+                            },
+                            3000
+                        )
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -473,7 +424,7 @@
                     tween.start();
                 } else {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z}, 3000)
+                        .to({ x: positionList[i - 1].x, y: positionList[i - 1].y, z: positionList[i - 1].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -491,15 +442,15 @@
                 index = worksName.length - 1;
             }
 
-            name.style.opacity = "0";
-            name.style.transform = "translateY(-150px)";
+            work_name_dom.style.opacity = "0";
+            work_name_dom.style.transform = "translateY(-150px)";
             setTimeout(() => {
-                name.classList.add("animation");
-                name.style.opacity = "1";
-                name.style.transform = "translateY(0px)";
+                work_name_dom.classList.add("animation");
+                work_name_dom.style.opacity = "1";
+                work_name_dom.style.transform = "translateY(0px)";
             }, 2000);
 
-            let positionList = []
+            let positionList = [];
             for (const item of items) {
                 const positions = item.position;
                 positionList.push(positions);
@@ -508,7 +459,7 @@
             for (let i = 0; i < items.length; i++) {
                 if (i + 1 === items.length) {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[0].x, y: positionList[0].y, z: positionList[0].z}, 3000)
+                        .to({ x: positionList[0].x, y: positionList[0].y, z: positionList[0].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -516,7 +467,7 @@
                     tween.start();
                 } else {
                     let tween = new TWEEN.Tween(items[i].position)
-                        .to({x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z}, 3000)
+                        .to({ x: positionList[i + 1].x, y: positionList[i + 1].y, z: positionList[i + 1].z }, 3000)
                         .easing(TWEEN.Easing.Quadratic.InOut)
                         .onComplete(() => {
                             boolAnimate = true;
@@ -529,8 +480,8 @@
             boolChange2 = false;
             boolAnimate = true;
         }
-        name.innerHTML = worksName[index];
-        // informationText.innerHTML = worksInformation[index];
+        work_name_dom.innerHTML = worksName[index];
+        info_text.innerHTML = worksInformation[index];
     }
 
     function onMouseDown(event) {
@@ -583,41 +534,40 @@
         render();
     }
 
-    let progressBar, name, exit, information_dom, informationText;
     //Set Model
 
     onMount(async () => {
-        progressBar = document.getElementById('loading-progress');
-        name = document.querySelector("#work-name");  //作品名稱
-        exit = document.querySelector("#exit");  //點模型後需要跳出去的ui
-        information_dom = document.querySelector("#work-information");  //資訊欄
-        informationText = document.querySelector("#text");  //資訊欄裡面的字
+        progress_bar = document.getElementById("loading-progress");
+        work_name_dom = document.querySelector("#work-name"); //作品名稱
+        exit_btn = document.querySelector("#exit"); //點模型後需要跳出去的ui
+        info_dom = document.querySelector("#work-information"); //資訊欄
+        info_text = document.querySelector("#text"); //資訊欄裡面的字
 
-        await loadModel('/home/static/gltf/grate.gltf').then(model => grate = model);
-        await loadModel('/home/static/gltf/grate2.gltf').then(model => grate2 = model);
-        await loadModel('/home/static/gltf/grate3.gltf').then(model => grate3 = model);
-        await loadModel('/home/static/gltf/postperception.gltf').then(model => text = model);
+        await loadModel(`${BASE_URL}/home/static/gltf/grate_1.gltf`).then((model) => (grate_1 = model));
+        await loadModel(`${BASE_URL}/home/static/gltf/grate_2.gltf`).then((model) => (grate_2 = model));
+        await loadModel(`${BASE_URL}/home/static/gltf/grate_3.gltf`).then((model) => (grate_3 = model));
+        await loadModel(`${BASE_URL}/home/static/gltf/postperception.gltf`).then((model) => (title_model = model));
 
         for (const path of itemPath) {
-            await loadModel(path).then(item => {
+            await loadModel(path).then((item) => {
                 loadedCount++;
                 const progress = Math.floor((loadedCount / totalCount) * 100);
-                progressBar.style.width = progress / 2 + '%';
-                progressBar.innerHTML = progress * 1 + '%';
+                progress_bar.style.width = progress / 2 + "%";
+                progress_bar.innerHTML = progress * 1 + "%";
                 items.push(item);
                 if (loadedCount === totalCount) {
-                    progressBar.style.left = '15000px';
+                    progress_bar.style.left = "15000px";
                 }
             });
         }
 
-        console.log('loaded')
-        grate.position.set(0.1, 0, 0);
-        grate3.position.set(0.1, 0, 0);
-        grate2.position.set(0.1, 0, 0.1);
-        grate.material = grateMaterial;
-        text.position.set(-0, 0.50, -3.6);
-        text.scale.set(2.2, 2.2, 2.2)
+        console.log("loaded");
+        grate_1.position.set(0.1, 0, 0);
+        grate_3.position.set(0.1, 0, 0);
+        grate_2.position.set(0.1, 0, 0.1);
+        grate_1.material = grateMaterial;
+        title_model.position.set(-0, 0.5, -3.6);
+        title_model.scale.set(2.2, 2.2, 2.2);
 
         items[3].position.set(0, 0, -2);
 
@@ -626,30 +576,27 @@
         }
 
         scene.add(items[3]);
-        scene.add(grate);
-        scene.add(grate2);
-        scene.add(grate3);
-        scene.add(text);
+        scene.add(grate_1);
+        scene.add(grate_2);
+        scene.add(grate_3);
+        scene.add(title_model);
 
-
-        name.innerHTML = worksName[index];
-        // informationText.innerHTML = worksInformation[index];
-        current_work_info = artworks_info[index].description;
+        work_name_dom.innerHTML = worksName[index];
+        info_text.innerHTML = worksInformation[index];
 
         //SetItem
-        setItemPosition(boolDevice);
-
+        setItemPosition(is_mobile);
 
         //Bool Device
-        if (boolDevice) {
+        if (is_mobile) {
             onMobileControl();
         } else {
             onPCControl();
         }
 
         //ChangeMode
-        exit.addEventListener("click", () => {
-            name.style.opacity = "1";
+        exit_btn.addEventListener("click", () => {
+            work_name_dom.style.opacity = "1";
             mode = 0;
         });
 
@@ -658,28 +605,24 @@
         //WindowResize
         window.addEventListener("resize", onWindowResize);
 
-        document.getElementById('main').appendChild(renderer.domElement);
+        document.getElementById("main").appendChild(renderer.domElement);
 
         //Update
         animate();
-    })
-
+    });
 </script>
 
 <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-<link rel="stylesheet" type="text/css" href="/home/css/home.css"/>
+<link rel="stylesheet" type="text/css" href="{BASE_URL}/home/css/home.css" />
 
 <div id="main" class="w-screen h-screen fixed">
-    <div id="loading-progress"
-         class="h-8 flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-sky-500 to-amber-500 duration-300">
-        0 %
-    </div>
+    <div id="loading-progress" class="h-8 flex items-center justify-center text-black text-center rounded-2xl bg-gradient-to-tr from-sky-500 to-amber-500 duration-300">0 %</div>
     <!-- <canvas class="three"></canvas> -->
-    <div class="container">
-        <div id="work-name"></div>
-        <div id="exit"></div>
-        <div id="work-information">
-            <p id="text">{@html current_work_info}</p>
-        </div>
+</div>
+<div class="flex justify-center items-center w-1/2 h-1/2 bg-white">
+    <div id="work-name" />
+    <div id="exit" class="fa-solid fa-close" />
+    <div id="work-information">
+        <p id="text" class="overflow-auto max-h-[30vh]" />
     </div>
 </div>

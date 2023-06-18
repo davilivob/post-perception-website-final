@@ -1,12 +1,13 @@
 <script>
     export let params = {};
 
-    let path = `/#${params.path.replace('@', '/')}`;
+    const BASE_URL = import.meta.env.BASE_URL;
 
-    while (path.includes('@')) path = path.replace('@', '/')
+    let path = `${BASE_URL}/#${params.path.replace("@", "/")}`;
 
+    while (path.includes("@")) path = path.replace("@", "/");
 
-    console.log(path)
+    console.log(path);
 
     // window.location.reload();
 

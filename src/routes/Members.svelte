@@ -13,6 +13,9 @@
     const is_en: boolean = params.language == "en";
     const all_info = $information[params.language];
     const members_info: object = all_info.admins;
+
+    const BASE_URL = import.meta.env.BASE_URL;
+
     let members = [];
     for (const [key, value] of Object.entries(all_info.personal_info)) {
         members.push({
@@ -173,7 +176,7 @@
                 id="{page.name}-btn"
                 class="rounded-full bg-gradient-to-tl from-transparent to-white/10 px-3 py-1 text-s cursor-pointer text-white/70 hover:text-white hover:bg-black"
                 on:click={(e) => {
-                    window.location.href = `/#/${params.language}/members/${page.id}`;
+                    window.location.href = `${BASE_URL}/#/${params.language}/members/${page.id}`;
                     if (current_page === page.name) return;
                     current_page = page.name;
                     page_color = page.color;

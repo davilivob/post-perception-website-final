@@ -1,9 +1,9 @@
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 async function loadModel(fileName) {
     const dracoloader = new DRACOLoader();
-    dracoloader.setDecoderPath('/home/three/')
+    dracoloader.setDecoderPath('/108/home/three/')
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoloader);
     try {
@@ -16,4 +16,4 @@ async function loadModel(fileName) {
     }
 }
 
-export {loadModel};
+export { loadModel };

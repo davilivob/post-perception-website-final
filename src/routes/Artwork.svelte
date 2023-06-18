@@ -3,6 +3,8 @@
     import { information } from "../lib/info";
     import { onMount } from "svelte";
 
+    const BASE_URL = import.meta.env.BASE_URL;
+
     export let params: object = {};
 
     let is_en: boolean = params.language == "en";
@@ -37,54 +39,35 @@
             content: is_en ? "Description" : "作品介紹",
             icon: "fa-books",
         },
-        {
-            name: "image_record",
-            color: "violet",
-            content: is_en ? "Image Record" : "照片記錄",
-            icon: "fa-images",
-        },
-        {
-            name: "video_record",
-            color: "lime",
-            content: is_en ? "Video Record" : "影像記錄",
-            icon: "fa-video",
-        },
+        img_range[1] === 0
+            ? {}
+            : {
+                  name: "image_record",
+                  color: "violet",
+                  content: is_en ? "Image Record" : "照片記錄",
+                  icon: "fa-images",
+              },
+        !artwork_info.record.video
+            ? {}
+            : {
+                  name: "video_record",
+                  color: "lime",
+                  content: is_en ? "video record" : "影像記錄",
+                  icon: "fa-video",
+              },
     ];
 
     if (["creators", "description", "image_record", "video_record"].indexOf(current_page) == -1) {
-        window.location.href = `/#/${params.language}/artworks/${params.id}`;
+        window.location.href = `${BASE_URL}/#/${params.language}/artworks/${params.id}`;
         current_page = default_page;
     }
 
     let record_images = [];
     for (let i = img_range[0]; i < img_range[1] + img_range[0]; i++) {
-        record_images.push(`/images/exhibition/artwork_photos/${artwork_info.id}/${i}.jpg`);
+        record_images.push(`${BASE_URL}/images/exhibition/artwork_photos/${artwork_info.id}/${i}.jpg`);
     }
 
     console.log(record_images);
-    if (record_images.length == 0) {
-        record_images = [
-            "/images/exhibition/artwork_photos/0/2.jpg",
-            "/images/exhibition/artwork_photos/0/3.jpg",
-            "/images/exhibition/artwork_photos/0/4.jpg",
-            "/images/exhibition/artwork_photos/0/5.jpg",
-            "/images/exhibition/artwork_photos/0/6.jpg",
-            "/images/exhibition/artwork_photos/0/7.jpg",
-            "/images/exhibition/artwork_photos/0/8.jpg",
-            "/images/exhibition/artwork_photos/0/9.jpg",
-            "/images/exhibition/artwork_photos/0/10.jpg",
-            "/images/exhibition/artwork_photos/0/11.jpg",
-            "/images/exhibition/artwork_photos/0/12.jpg",
-            "/images/exhibition/artwork_photos/0/13.jpg",
-            "/images/exhibition/artwork_photos/0/14.jpg",
-            "/images/exhibition/artwork_photos/0/15.jpg",
-            "/images/exhibition/artwork_photos/0/16.jpg",
-            "/images/exhibition/artwork_photos/0/17.jpg",
-            "/images/exhibition/artwork_photos/0/18.jpg",
-            "/images/exhibition/artwork_photos/0/19.jpg",
-            "/images/exhibition/artwork_photos/0/20.jpg",
-        ];
-    }
 
     function next_img() {
         if (image_num >= img_range[0] - 1) image_num = 0;
@@ -96,11 +79,11 @@
     }
 
     function next_work() {
-        window.location.href = `/#/${params.language}/artworks/${artwork_info.id + 1}`;
+        window.location.href = `${BASE_URL}/#/${params.language}/artworks/${artwork_info.id + 1}`;
     }
 
     function last_work() {
-        window.location.href = `/#/${params.language}/artworks/${artwork_info.id - 1}`;
+        window.location.href = `${BASE_URL}/#/${params.language}/artworks/${artwork_info.id - 1}`;
     }
 
     function toggle_description(e) {
@@ -139,17 +122,10 @@
     });
 </script>
 
-<!--<div class="mt-8 mx-3 fixed">-->
-<!--    <a class="text-lg" href="/#/{params.language}/artworks">-->
-<!--        <a class="fa-solid fa-chevron-left"></a>-->
-<!--        <a class="transition-all duration-300 text-white/0 hover:text-white pointer-events-none" id="go-back-text">{is_en ? "Back to Artworks List": "回到作品列表"}</a>-->
-<!--    </a>-->
-<!--</div>-->
-
 <div class="mx-3 pt-16 text-center">
     <a
         class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out"
-        href="/#/redirect/@{params.language}@artworks@{artwork_info.id >= 1 ? artwork_info.id - 1 : 12}"
+        href="{BASE_URL}/#/redirect/@{params.language}@artworks@{artwork_info.id >= 1 ? artwork_info.id - 1 : 12}"
     >
         <a class="fa-solid fa-arrow-left" />
         {all_info.art_teams[artwork_info.id >= 1 ? artwork_info.id - 1 : 12].title}
@@ -157,7 +133,7 @@
     <h1 class="text-center text-5xl font-black m-1 text-white {artwork_info.id == 4 ? 'break-all' : ''}">{artwork_info.title}</h1>
     <a
         class="text-lg mx-3 text-white/20 cursor-pointer hover:text-white transition-all duration-500 ease-in-out"
-        href="/#/redirect/@{params.language}@artworks@{artwork_info.id < 12 ? artwork_info.id + 1 : 0}"
+        href="{BASE_URL}/#/redirect/@{params.language}@artworks@{artwork_info.id < 12 ? artwork_info.id + 1 : 0}"
     >
         {artwork_info.id < 12 ? all_info.art_teams[artwork_info.id + 1].title : all_info.art_teams[0].title}
         <a class="fa-solid fa-arrow-right" />
@@ -170,30 +146,32 @@
 <div class="mx-3 flex flex-col justify-center items-center text-center my-3">
     <div class="flex flex-rol flex-wrap rounded-full m-auto items-center justify-center gap-3 px-2 py-1">
         {#each pages as page}
-            <div
-                id="{page.name}-btn"
-                class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-s cursor-pointer"
-                on:click={(e) => {
-                    if (current_page === page.name) return;
-                    window.location.href = `/#/${params.language}/artworks/${artwork_info.id}/${page.name}`;
-                    current_page = page.name;
-                    console.log(`switching to ${page.name}`);
-                    e.target.classList.toggle(`to-${page.color}-900`);
-                    e.target.classList.toggle(`to-${page.color}-900/10`);
-                    for (let i = 0; i < pages.length; i++) {
-                        if (pages[i].name !== page.name) {
-                            hide_page(pages[i].name);
-                            document.getElementById(`${pages[i].name}-btn`).classList.remove(`to-${pages[i].color}-900`);
-                            document.getElementById(`${pages[i].name}-btn`).classList.add(`to-${pages[i].color}-900/10`);
-                        } else {
-                            show_page(pages[i].name);
+            {#if page.name}
+                <div
+                    id="{page.name}-btn"
+                    class="rounded-full bg-gradient-to-tl from-white/10 to-{page.color}-900/10 px-3 py-1 text-s cursor-pointer"
+                    on:click={(e) => {
+                        if (current_page === page.name) return;
+                        window.location.href = `${BASE_URL}/#/${params.language}/artworks/${artwork_info.id}/${page.name}`;
+                        current_page = page.name;
+                        console.log(`switching to ${page.name}`);
+                        e.target.classList.toggle(`to-${page.color}-900`);
+                        e.target.classList.toggle(`to-${page.color}-900/10`);
+                        for (let i = 0; i < pages.length; i++) {
+                            if (pages[i].name !== page.name) {
+                                hide_page(pages[i].name);
+                                document.getElementById(`${pages[i].name}-btn`).classList.remove(`to-${pages[i].color}-900`);
+                                document.getElementById(`${pages[i].name}-btn`).classList.add(`to-${pages[i].color}-900/10`);
+                            } else {
+                                show_page(pages[i].name);
+                            }
                         }
-                    }
-                }}
-            >
-                <a class="fa-regular {page.icon} pointer-events-none" />
-                {page.content}
-            </div>
+                    }}
+                >
+                    <a class="fa-regular {page.icon} pointer-events-none" />
+                    {page.content}
+                </div>
+            {/if}
         {/each}
     </div>
 
@@ -222,7 +200,7 @@
 
             <div
                 class="w-full h-[80vh] bg-no-repeat bg-cover bg-center rounded-tl-xl rounded-tr-xl rounded-br-xl"
-                style="background-image:url('/images/exhibition/artwork_photos/{artwork_info.id}/{image_num}.jpg'), url('/images/website/logo/logo200.gif');"
+                style="background-image:url('{BASE_URL}/images/exhibition/artwork_photos/{artwork_info.id}/{image_num}.jpg'), url('{BASE_URL}/images/website/logo/logo200.gif');"
             >
                 <div
                     class="bg-black/30 top-0 sm:text-lg text-s text-cyan-50/80 text-left break-after-avoid
@@ -281,7 +259,7 @@
                     {#each record_images as img_link}
                         <div
                             class="min-w-[11vw] h-[8vh] bg-no-repeat bg-cover bg-center border-2 hover:border-white border-white/0 cursor-pointer duration-200"
-                            style="background-image:url('{img_link}'), url('/images/website/logo/logo200.gif');"
+                            style="background-image:url('{img_link}'), url('{BASE_URL}/images/website/logo/logo200.gif');"
                             on:click={() => {
                                 record_img_num = record_images.indexOf(img_link);
                                 document.querySelector("#record-image-container").style.backgroundImage = `url('${img_link}')`;

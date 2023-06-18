@@ -132,7 +132,7 @@ const global_info = {
         {
             id: 0,
             record: {
-                images: [2, 17],
+                images: [2, 1],
                 videos: {
                     youtube: "dQw4w9WgXcQ",
                 },
@@ -141,49 +141,49 @@ const global_info = {
         {
             id: 1,
             record: {
-                images: [5, 0],
+                images: [5, 1],
                 videos: {},
             },
         },
         {
             id: 2,
             record: {
-                images: [4, 0],
+                images: [4, 1],
                 videos: {},
             },
         },
         {
             id: 3,
             record: {
-                images: [5, 0],
+                images: [5, 1],
                 videos: {},
             },
         },
         {
             id: 4,
             record: {
-                images: [4, 0],
+                images: [4, 1],
                 videos: {},
             },
         },
         {
             id: 5,
             record: {
-                images: [7, 0],
+                images: [7, 1],
                 videos: {},
             },
         },
         {
             id: 6,
             record: {
-                images: [6, 0],
+                images: [6, 1],
                 videos: {},
             },
         },
         {
             id: 7,
             record: {
-                images: [4, 0],
+                images: [4, 1],
                 videos: {},
             },
         },
@@ -970,11 +970,15 @@ const information_json = {
                 title: "FRONTIER_02",
                 format: "Internet-based Interactive Video Installation",
                 description: `
-                    21世紀以降，互聯網已然發展成與現實相互糾纏的鏡像世界，使用介面的演進，大大加速了這一進程，<!--
-                    -->太空殖民的時代尚未到來，互聯網可能先一步成為近未來的殖民地。<!--
-                    -->本作接續其前作 FRONTIER_01，以不同比例的手機頻幕，播放三個月展期以來所累積的數千筆，觀眾所提供的圖文資料，<!--
-                    -->並使用這些資料建設一座龐雜卻有序的環形太空站。<!--
-                    -->身處世界各地的人們，不約而同地透過某種介面登上了這座太空站，共構出現今的互聯網生態，持續開拓 The Next Frontier。
+                    Since the 21st century, the internet has become a mirror world intertwined with reality.
+                    The evolution of user interfaces has dramatically accelerated this process.
+                    While the era of space colonization has not yet arrived, the internet may become a colony in the near future.
+                    This work is a continuation of its predecessor, FRONTIER_01.
+                    It uses mobile phone screens of different scales to display the thousands of graphic and textual data accumulated
+                    during the three-month exhibition period that audiences have provided. Using this data,
+                    a complex yet orderly circular space station is constructed.
+                    People worldwide board this space station through different interfaces,
+                    building the current internet ecology and continuously exploring the next frontier.
                 `,
                 media: "Glass, Electronic Materials, Color Sound, 18'00\", Color/Sound",
                 size: "200cm x 200cm x 200cm",

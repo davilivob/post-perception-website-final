@@ -1,14 +1,14 @@
 <script>
-    import {information} from "../lib/info";
+    import { information } from "../lib/info";
     import Sponsor from "../Components/Sponsor.svelte";
 
     export let params = {};
-    const is_en = params.language == 'en';
+    const is_en = params.language == "en";
     const all_info = $information[params.language];
+    const BASE_URL = import.meta.env.BASE_URL;
 
-    const description =
-        !is_en ?
-            `
+    const description = !is_en
+        ? `
             在資本社會與科技發展方興未艾的當今，技術革新持續擴充感知的疆界，高速且溢滿的提供著人們經驗世界的方式。而科技、新媒體藝術亦在這波浪潮中乘風邁進，時代的步伐正如火如荼的朝向虛擬前進。<br><br>
             身處感官紛亂的世代，在擁抱技術與便利生活之際，日常經驗的切片總在回望時倏然體現。使我們反思時代的課題與出口。我們將「後知後覺後」視為一種立基於高速時代的感知練習與行動，核心概念分為三個面向——<br><br>
             <i class="font-bold">一、後</i><br>
@@ -21,7 +21,8 @@
             伴隨科技革新，感知的疆界不斷擴張，提供人們高速經驗世界的方式。在擁抱科技的便捷與速度之際，時有日常碎片散落在來去匆匆的日月之間，而在回望時倏然體現。<br><br>
             展覽將「後知後覺後」視為一種立基於高速時代的感知練習，分為「後」、「在知覺之後」與「光譜的可能」三個子題。期盼回應當今高速時代的表徵，為其提出更多元的感知節奏。透過梳理生命經驗與創作課題，體現感知錯落的微妙之處；聚焦科技/新媒體藝術在當今發展的光譜，在藝術與科技實踐的奮力一擊。<br><br>
             「後知後覺後」指向屬於我們自身的時代輪廓，一種高速之下反思、辯證與前行的動態。
-        ` : `
+        `
+        : `
             In today's society, where capital and technological development are flourishing, technological innovation continues to expand the boundaries of perception, offering people fast and overflowing ways to experience the world. Science, technology, and new media art are also advancing in this wave, and the pace of the times is advancing towards the virtual world.<br><br>
             Living in a generation of sensory overload, while embracing technology and convenient living, the slices of daily experience suddenly become apparent when looking back, causing us to reflect on the issues and outlets of the times. We regard "hindsight" as a perceptual exercise and action based on the high-speed era, with three core concepts:<br><br>
             <i class="font-bold">"Hou" ( 後 ): </i><br>
@@ -33,31 +34,28 @@
             As millennials, we were born at the node of analog and digital, grew up in the era of the Internet boom, and developed in today's data computing era. With the concerted effort of our professional knowledge and creative energy, "Hindsight" points to the era outline that belongs to ourselves, a dynamic of reflection, dialectic, and progress under high speed.<br><br>
             With the innovation of technology, the boundary of perception continues to expand, providing people with a fast-paced way to experience the world. While embracing the convenience and speed of technology, there are often daily fragments scattered in the rushing days and months, but suddenly become apparent when looking back.<br><br>
             The exhibition regards "hindsight" as a perceptual exercise and action based on the high-speed era...
-        `
-
-
+        `;
 </script>
 
 <div class="pt-16 flex flex-col gap-5 items-center justify-center">
     <div class="mx-3 flex flex-row justify-center items-center">
-        <img src="/images/website/logo/logo200.gif"
-             class="w-[10vh] h-[10vh] rotate-180" alt="">
+        <img src="{BASE_URL}/images/website/logo/logo200.gif" class="w-[10vh] h-[10vh] rotate-180" alt="" />
         <h1 class="text-center text-5xl font-black my-1 text-white">
             {is_en ? "About This Exhibition" : "關於本展覽"}
         </h1>
-        <img src="/images/website/logo/logo200.gif?id={Math.floor(Math.random() * 1000)}" class="w-[10vh] h-[10vh]"
-             alt="">
+        <img src="{BASE_URL}/images/website/logo/logo200.gif?id={Math.floor(Math.random() * 1000)}" class="w-[10vh] h-[10vh]" alt="" />
     </div>
 
     <div class="flex flex-row flex-wrap gap-3 justify-center items-center">
-        <div class="w-5/6 md:w-2/6 max-h-[60vh] overflow-auto sticky shadow-inner shadow-black bg-no-repeat bg-cover bg-center"
-             style="background-image: url('/images/website/paper-texture.jpg')">
+        <div
+            class="w-5/6 md:w-2/6 max-h-[60vh] overflow-auto sticky shadow-inner shadow-black bg-no-repeat bg-cover bg-center"
+            style="background-image: url('{BASE_URL}/images/website/paper-texture.jpg')"
+        >
             <p class="m-4 mx-8 text-black/90 text-lg text-center">
                 {@html description}
             </p>
         </div>
-        <img src="images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded bg-no-repeat bg-center"
-             style="background-image: url('/images/website/logo/logo200.gif')">
+        <img src="{BASE_URL}/images/exhibition/poster.jpg" alt="" class="max-h-[60vh] rounded bg-no-repeat bg-center" style="background-image: url('{BASE_URL}/images/website/logo/logo200.gif')" />
     </div>
-    <Sponsor language="{params.language}"/>
+    <Sponsor language={params.language} />
 </div>
