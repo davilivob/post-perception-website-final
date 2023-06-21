@@ -2,7 +2,11 @@ import { readable } from "svelte/store";
 
 const global_info = {
     personal_info: {
-        1: {},
+        1: {
+            external_links: {
+                instagram: "https://www.instagram.com/jjpai828 https://www.instagram.com/1_3.sugar"
+            }
+        },
         2: {},
         3: {},
         4: {},
@@ -132,93 +136,86 @@ const global_info = {
         {
             id: 0,
             record: {
-                images: [2, 1],
+                images: [2, 10],
                 videos: {
-                    youtube: "dQw4w9WgXcQ",
+                    youtube: "w8MjdCqiTtA",
                 },
             },
         },
         {
             id: 1,
             record: {
-                images: [5, 1],
+                images: [5, 7],
                 videos: {},
             },
         },
         {
             id: 2,
             record: {
-                images: [4, 1],
+                images: [4, 20],
                 videos: {},
             },
         },
         {
             id: 3,
             record: {
-                images: [5, 1],
+                images: [5, 8],
                 videos: {},
             },
         },
         {
             id: 4,
             record: {
-                images: [4, 1],
+                images: [4, 10],
                 videos: {},
             },
         },
         {
             id: 5,
             record: {
-                images: [7, 1],
+                images: [7, 16],
                 videos: {},
             },
         },
         {
             id: 6,
             record: {
-                images: [6, 1],
+                images: [6, 26],
                 videos: {},
             },
         },
         {
             id: 7,
             record: {
-                images: [4, 1],
+                images: [4, 18],
                 videos: {},
             },
         },
         {
             id: 8,
             record: {
-                images: [4, 0],
+                images: [4, 8],
                 videos: {},
             },
         },
         {
             id: 9,
             record: {
-                images: [5, 0],
+                images: [5, 13],
                 videos: {},
             },
         },
         {
             id: 10,
             record: {
-                images: [3, 0],
+                images: [3, 15],
                 videos: {},
             },
         },
         {
             id: 11,
             record: {
-                images: [3, 0],
-                videos: {},
-            },
-        },
-        {
-            id: 12,
-            record: {
-                images: [3, 0],
+                images: [3, 23],
                 videos: {},
             },
         },
@@ -592,31 +589,6 @@ const information_json = {
                 id: 10,
                 members: [
                     {
-                        id: 3,
-                        title: "",
-                    },
-                ],
-                title: "死循環",
-                format: "VR 單人/多人，闖關遊戲",
-                description: `
-                    此作品為一個虛擬實境闖關遊戲，並用作品提供的特製遙控器來進行操控遊玩。<br><br><!--
-                    -->玩家需要在有限時間內完成一系列的步驟得以完成關卡、獲得積分並前往下一關。<!--
-                    -->透過累積積分玩家將逐步豐富這個世界，並可以在完成每個關卡後環景探索這個虛擬世界，<!--
-                    -->同時回顧自己破關的行進過程，亦可以選擇跳過完成不了的關卡，此行為將會影響到遊戲之後的進程。<br><br><!--
-                    -->遊戲主要故事背景：<br><br><!--
-                    -->已經過了好久沒再做過這同一場夢。當時還重複做著夢，夢中的我總是看不慣自己用笑容再會重複認識的新朋友，<!--
-                    -->直到我做出了那種選擇……如今的夢都顯得越發不真實，我也越來越難以找到我原來所屬的世界。<br><br><!--
-                    -->墜落、失重感……才從睡夢中清醒的我睜開雙眼，洗漱、著衣、昨日的記憶，眼前的一切看似是有在移動，<!--
-                    -->但觸感明顯地告訴我，其實每一天壓在身上的烙印，那位置從沒改變過。<!--
-                    -->如同太陽東昇西落、狗追自己的尾巴，曬傷了、咬疼了，日復一日、一切的一切，那都只不過是循環撥放罷了。<br><br>
-                `,
-                media: "自製遙控裝置",
-                size: "",
-            },
-            {
-                id: 11,
-                members: [
-                    {
                         id: 18,
                         title: "",
                     },
@@ -634,7 +606,7 @@ const information_json = {
                 size: "",
             },
             {
-                id: 12,
+                id: 11,
                 members: [
                     {
                         id: 26,
@@ -1279,24 +1251,6 @@ const information_json = {
                 id: 10,
                 members: [
                     {
-                        id: 3,
-                        title: "",
-                    },
-                ],
-                title: "Endless Loop",
-                format: "VR Single/Multiplayer Adventure Game",
-                description: `
-                    Fed up with the constraints of time, breaking the cycle all at once, escaping the monotonous daily routine.<br><br>
-                    The changes in life gradually unfold, the trends behind the trends form a context, and just before perceiving one's own awareness, the traces and trajectories of the past, present, and future are laid bare. Believing I could know the infinite, I realized one thing in an instant: the initial action to break the cycle was merely another cycle on a grander scale.<br><br>
-                    A dog joyfully chasing its own tail, locked in an eternal cycle.
-                `,
-                media: "Self-made Remote Control Device",
-                size: "",
-            },
-            {
-                id: 11,
-                members: [
-                    {
                         id: 18,
                         title: "",
                     },
@@ -1310,7 +1264,7 @@ const information_json = {
                 size: "",
             },
             {
-                id: 12,
+                id: 11,
                 members: [
                     {
                         id: 26,
@@ -1616,4 +1570,3 @@ Object.entries(en_art_teams).forEach(([key]) => {
 });
 
 export const information = readable(information_json);
-// implementation goes here
